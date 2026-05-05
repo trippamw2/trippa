@@ -532,13 +532,15 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="children">Children <span class="optional-badge">Optional</span></label>
-                            <select id="children" class="form-select">
+                            <select id="children" class="form-select" required>
+                                <option value="" disabled selected>Select</option>
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                             </select>
+                            <div class="error-message" id="childrenError">Select number of children</div>
                         </div>
                     </div>
                     <div class="form-group" id="childrenAgesGroup" style="display: none;">
@@ -547,7 +549,7 @@
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="nationality">Nationality</label>
-                        <select id="nationality" class="form-select">
+                        <select id="nationality" class="form-select" required>
                             <option value="" disabled selected>Select nationality</option>
                             <option value="Malawian">Malawian</option>
                             <option value="South African">South African</option>
@@ -572,6 +574,7 @@
                             <option value="Ghanaian">Ghanaian</option>
                             <option value="Other">Other</option>
                         </select>
+                        <div class="error-message" id="nationalityError">Select nationality</div>
                     </div>
 
                     <div class="divider"></div>
@@ -584,38 +587,41 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label" for="stayType">Type of Stay</label>
-                            <select id="stayType" class="form-select">
+                            <select id="stayType" class="form-select" required>
                                 <option value="" disabled selected>Select</option>
-                                <option value="Lake Malawi">Lake Malawi</option>
-                                <option value="Safari">Safari</option>
-                                <option value="City">City</option>
-                                <option value="Budget">Budget</option>
-                                <option value="Luxury">Luxury</option>
+                                <option value="Villa">Villa</option>
+                                <option value="Apartment">Apartment</option>
+                                <option value="House">House</option>
+                                <option value="Room in a Lodge">Room in a Lodge</option>
+                                <option value="Room in a Hotel">Room in a Hotel</option>
                             </select>
+                            <div class="error-message" id="stayTypeError">Select type of stay</div>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="roomType">Room Type</label>
-                            <select id="roomType" class="form-select">
+                            <select id="roomType" class="form-select" required>
                                 <option value="" disabled selected>Select</option>
                                 <option value="Single">Single</option>
                                 <option value="Double">Double</option>
                                 <option value="Deluxe">Deluxe</option>
                             </select>
+                            <div class="error-message" id="roomTypeError">Select room type</div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="budget">Budget Range <span class="optional-badge">Optional</span></label>
-                        <select id="budget" class="form-select">
-                            <option value="" disabled selected>Select budget (MWK)</option>
-                            <option value="MWK 150K">MWK 150K</option>
-                            <option value="MWK 200K">MWK 200K</option>
-                            <option value="MWK 300K">MWK 300K</option>
-                            <option value="MWK 400K">MWK 400K</option>
-                            <option value="MWK 500K">MWK 500K</option>
-                            <option value="MWK 600K">MWK 600K</option>
-                            <option value="MWK 750K">MWK 750K</option>
-                            <option value="MWK 1M">MWK 1M</option>
+                        <label class="form-label" for="budget">Budget Range</label>
+                        <select id="budget" class="form-select" required>
+                            <option value="" disabled selected>Select budget (MWK per night)</option>
+                            <option value="MWK 150K">MWK 150K per night</option>
+                            <option value="MWK 200K">MWK 200K per night</option>
+                            <option value="MWK 300K">MWK 300K per night</option>
+                            <option value="MWK 400K">MWK 400K per night</option>
+                            <option value="MWK 500K">MWK 500K per night</option>
+                            <option value="MWK 600K">MWK 600K per night</option>
+                            <option value="MWK 750K">MWK 750K per night</option>
+                            <option value="MWK 1M">MWK 1M per night</option>
                         </select>
+                        <div class="error-message" id="budgetError">Select budget range</div>
                     </div>
 
                     <div class="divider"></div>
@@ -623,10 +629,11 @@
                     <!-- Special Requests -->
                     <div class="section-title">
                         <span class="icon">✨</span>
-                        Special Requests <span class="optional-badge">Optional</span>
+                        Special Requests
                     </div>
                     <div class="form-group">
-                        <textarea id="requests" class="form-textarea" placeholder="Any special requirements, preferences, or questions..."></textarea>
+                        <textarea id="requests" class="form-textarea" placeholder="Any special requirements, preferences, or questions..." required></textarea>
+                        <div class="error-message" id="requestsError">Please enter your special requests</div>
                     </div>
 
                     <div class="divider"></div>
@@ -699,6 +706,12 @@
                 { id: 'checkin', errorId: 'checkinError' },
                 { id: 'checkout', errorId: 'checkoutError' },
                 { id: 'adults', errorId: 'adultsError' },
+                { id: 'children', errorId: 'childrenError' },
+                { id: 'nationality', errorId: 'nationalityError' },
+                { id: 'stayType', errorId: 'stayTypeError' },
+                { id: 'roomType', errorId: 'roomTypeError' },
+                { id: 'budget', errorId: 'budgetError' },
+                { id: 'requests', errorId: 'requestsError' },
                 { id: 'name', errorId: 'nameError' },
                 { id: 'phone', errorId: 'phoneError' }
             ];

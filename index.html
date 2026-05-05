@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trippa — Malawi's Finest Pool Stays</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        :root {
+            --orange-50: #FFF7ED;
+            --orange-100: #FFEDD5;
+            --orange-200: #FED7AA;
+            --orange-300: #FDBA74;
+            --orange-400: #FB923C;
+            --orange-500: #F97316;
+            --orange-600: #EA580C;
+            --white: #FFFFFF;
+            --gray-50: #FAFAF9;
+            --gray-200: #E7E5E4;
+            --gray-400: #A8A29E;
+            --gray-600: #57534E;
+            --gray-900: #1C1917;
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+            --radius: 14px;
+            --radius-lg: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--white);
+            color: var(--gray-900);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding-bottom: 100px;
+            overflow-x: hidden;
+        }
+
+        /* Faded orange background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(253, 186, 116, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(249, 115, 22, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(254, 215, 170, 0.06) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header with wave */
+        .header {
+            background: linear-gradient(135deg, var(--orange-500) 0%, var(--orange-600) 100%);
+            padding: 40px 20px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 50%);
+            animation: shimmer 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(10%, 5%); }
+        }
+
+        .logo {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 12px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 300px;
+            margin: 0 auto;
+            line-height: 1.5;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Wave decoration */
+        .wave-container {
+            position: relative;
+            margin-top: -2px;
+            overflow: hidden;
+        }
+
+        .wave-container svg {
+            display: block;
+            width: 100%;
+            height: 60px;
+        }
+
+        /* Floating icons row */
+        .floating-icons {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            padding: 20px 0 8px;
+            flex-wrap: wrap;
+        }
+
+        .icon-bubble {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            opacity: 0.7;
+        }
+
+        .icon-bubble .emoji {
+            font-size: 24px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .icon-bubble .label {
+            font-size: 10px;
+            font-weight: 500;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .icon-bubble:nth-child(2) .emoji { animation-delay: 0.5s; }
+        .icon-bubble:nth-child(3) .emoji { animation-delay: 1s; }
+        .icon-bubble:nth-child(4) .emoji { animation-delay: 1.5s; }
+        .icon-bubble:nth-child(5) .emoji { animation-delay: 2s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        /* Trust badges */
+        .trust-bar {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 8px 0 24px;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--gray-600);
+            background: var(--orange-50);
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+
+        /* Form wrapper */
+        .form-wrapper {
+            position: relative;
+            z-index: 1;
+            padding: 0 0 24px;
+        }
+
+        .form-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--orange-100);
+        }
+
+        .section-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title .icon {
+            font-size: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--gray-600);
+            margin-bottom: 6px;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 16px;
+            font-family: inherit;
+            color: var(--gray-900);
+            background: var(--gray-50);
+            border: 1.5px solid var(--gray-200);
+            border-radius: var(--radius);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+            -webkit-appearance: none;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: var(--orange-400);
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.12);
+            background: var(--white);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: var(--gray-400);
+        }
+
+        .form-select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2378716C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 40px;
+        }
+
+        .form-textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .optional-badge {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--gray-400);
+            background: var(--gray-50);
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-left: 6px;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--orange-100);
+            margin: 18px 0;
+        }
+
+        .form-input.error,
+        .form-select.error {
+            border-color: #EF4444;
+            background: #FEF2F2;
+        }
+
+        .error-message {
+            font-size: 12px;
+            color: #EF4444;
+            margin-top: 6px;
+            display: none;
+        }
+
+        .error-message.visible {
+            display: block;
+        }
+
+        /* Sticky CTA */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+            padding: 16px 20px;
+            padding-bottom: max(16px, env(safe-area-inset-bottom));
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+            z-index: 100;
+        }
+
+        .sticky-cta .container {
+            padding: 0;
+        }
+
+        .btn-whatsapp {
+            width: 100%;
+            padding: 16px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: inherit;
+            color: var(--white);
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: transform 0.15s, box-shadow 0.15s;
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+        }
+
+        .btn-whatsapp:active {
+            transform: scale(0.98);
+        }
+
+        .btn-whatsapp svg {
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 24px 20px 0;
+            font-size: 13px;
+            color: var(--gray-400);
+        }
+
+        /* Faded orange wave decorations on page */
+        .deco-wave {
+            position: relative;
+            height: 80px;
+            margin: 24px 0;
+            opacity: 0.4;
+        }
+
+        .deco-wave svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        @media (min-width: 640px) {
+            .header {
+                padding: 56px 20px 0;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .header p {
+                font-size: 16px;
+            }
+
+            .form-card {
+                padding: 32px;
+            }
+
+            .form-row {
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <img src="https://i.postimg.cc/pLRpK4Bd/trippa-logo.png" alt="Trippa" class="logo" />
+            <h1>Malawi's Finest Pool Stays</h1>
+            <p>Handpicked escapes with pools. Private, beautiful, unforgettable.</p>
+        </div>
+    </header>
+
+    <div class="wave-container">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0H1440V30C1440 30 1200 60 720 45C240 30 0 45 0 45V0Z" fill="#F97316" opacity="0.15"/>
+            <path d="M0 15H1440V40C1440 40 1080 60 720 50C360 40 0 50 0 50V15Z" fill="#F97316" opacity="0.1"/>
+            <path d="M0 25H1440V45C1440 45 960 60 720 55C480 50 0 55 0 55V25Z" fill="#F97316" opacity="0.06"/>
+        </svg>
+    </div>
+
+    <main class="form-wrapper">
+        <div class="container">
+
+            <!-- Floating experience icons -->
+            <div class="floating-icons">
+                <div class="icon-bubble">
+                    <span class="emoji">🏊</span>
+                    <span class="label">Pool</span>
+                </div>
+                <div class="icon-bubble">
+                    <span class="emoji">🍹</span>
+                    <span class="label">Drinks</span>
+                </div>
+                <div class="icon-bubble">
+                    <span class="emoji">🍖</span>
+                    <span class="label">Grill</span>
+                </div>
+                <div class="icon-bubble">
+                    <span class="emoji">🌅</span>
+                    <span class="label">Views</span>
+                </div>
+                <div class="icon-bubble">
+                    <span class="emoji">🛋️</span>
+                    <span class="label">Lounge</span>
+                </div>
+            </div>
+
+            <!-- Trust bar -->
+            <div class="trust-bar">
+                <span class="trust-badge">⚡ 5-min response</span>
+                <span class="trust-badge">💎 Curated stays</span>
+                <span class="trust-badge">⭐ 4.9/5 rating</span>
+            </div>
+
+            <form id="enquiryForm" novalidate>
+                <div class="form-card">
+
+                    <!-- Destination -->
+                    <div class="section-title">
+                        <span class="icon">📍</span>
+                        Destination
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="destination">Where do you want to go?</label>
+                        <select id="destination" class="form-select" required>
+                            <option value="" disabled selected>Select destination</option>
+                            <option value="Blantyre">Blantyre</option>
+                            <option value="Chikwawa">Chikwawa</option>
+                            <option value="Lilongwe">Lilongwe</option>
+                            <option value="Mangochi">Mangochi</option>
+                            <option value="Mulanje">Mulanje</option>
+                            <option value="Mzuzu">Mzuzu</option>
+                            <option value="Nkhata Bay">Nkhata Bay</option>
+                            <option value="Nkhotakota">Nkhotakota</option>
+                            <option value="Salima">Salima</option>
+                            <option value="Thyolo">Thyolo</option>
+                            <option value="Zomba">Zomba</option>
+                        </select>
+                        <div class="error-message" id="destinationError">Please select a destination</div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <!-- Travel Dates -->
+                    <div class="section-title">
+                        <span class="icon">📅</span>
+                        Travel Dates
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="checkin">Check-in</label>
+                            <input type="date" id="checkin" class="form-input" required>
+                            <div class="error-message" id="checkinError">Select a check-in date</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="checkout">Check-out</label>
+                            <input type="date" id="checkout" class="form-input" required>
+                            <div class="error-message" id="checkoutError">Select a check-out date</div>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <!-- Guest Details -->
+                    <div class="section-title">
+                        <span class="icon">👥</span>
+                        Guest Details
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="adults">Adults</label>
+                            <select id="adults" class="form-select" required>
+                                <option value="" disabled selected>Select</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6+</option>
+                            </select>
+                            <div class="error-message" id="adultsError">Select number of adults</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="children">Children <span class="optional-badge">Optional</span></label>
+                            <select id="children" class="form-select">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" id="childrenAgesGroup" style="display: none;">
+                        <label class="form-label" for="childrenAges">Children's Ages</label>
+                        <input type="text" id="childrenAges" class="form-input" placeholder="e.g. 5, 8, 12">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="nationality">Nationality</label>
+                        <select id="nationality" class="form-select">
+                            <option value="" disabled selected>Select nationality</option>
+                            <option value="Malawian">Malawian</option>
+                            <option value="South African">South African</option>
+                            <option value="British">British</option>
+                            <option value="Mozambican">Mozambican</option>
+                            <option value="Zambian">Zambian</option>
+                            <option value="Zimbabwean">Zimbabwean</option>
+                            <option value="American">American</option>
+                            <option value="Canadian">Canadian</option>
+                            <option value="Indian">Indian</option>
+                            <option value="Chinese">Chinese</option>
+                            <option value="German">German</option>
+                            <option value="French">French</option>
+                            <option value="Italian">Italian</option>
+                            <option value="Dutch">Dutch</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="Portuguese">Portuguese</option>
+                            <option value="Australian">Australian</option>
+                            <option value="Kenyan">Kenyan</option>
+                            <option value="Nigerian">Nigerian</option>
+                            <option value="Tanzanian">Tanzanian</option>
+                            <option value="Ghanaian">Ghanaian</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <!-- Stay Preferences -->
+                    <div class="section-title">
+                        <span class="icon">🏡</span>
+                        Stay Preferences
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="stayType">Type of Stay</label>
+                            <select id="stayType" class="form-select">
+                                <option value="" disabled selected>Select</option>
+                                <option value="Lake Malawi">Lake Malawi</option>
+                                <option value="Safari">Safari</option>
+                                <option value="City">City</option>
+                                <option value="Budget">Budget</option>
+                                <option value="Luxury">Luxury</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="roomType">Room Type</label>
+                            <select id="roomType" class="form-select">
+                                <option value="" disabled selected>Select</option>
+                                <option value="Single">Single</option>
+                                <option value="Double">Double</option>
+                                <option value="Deluxe">Deluxe</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="budget">Budget Range <span class="optional-badge">Optional</span></label>
+                        <select id="budget" class="form-select">
+                            <option value="" disabled selected>Select budget (MWK)</option>
+                            <option value="MWK 150K">MWK 150K</option>
+                            <option value="MWK 200K">MWK 200K</option>
+                            <option value="MWK 300K">MWK 300K</option>
+                            <option value="MWK 400K">MWK 400K</option>
+                            <option value="MWK 500K">MWK 500K</option>
+                            <option value="MWK 600K">MWK 600K</option>
+                            <option value="MWK 750K">MWK 750K</option>
+                            <option value="MWK 1M">MWK 1M</option>
+                        </select>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <!-- Special Requests -->
+                    <div class="section-title">
+                        <span class="icon">✨</span>
+                        Special Requests <span class="optional-badge">Optional</span>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="requests" class="form-textarea" placeholder="Any special requirements, preferences, or questions..."></textarea>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <!-- Contact Info -->
+                    <div class="section-title">
+                        <span class="icon">👤</span>
+                        Contact Info
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="name">Full Name</label>
+                        <input type="text" id="name" class="form-input" placeholder="Your full name" required>
+                        <div class="error-message" id="nameError">Please enter your name</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-input" placeholder="e.g. +265 983 311 818" required>
+                        <div class="error-message" id="phoneError">Please enter your phone number</div>
+                    </div>
+
+                </div>
+
+                <div class="footer">
+                    Trippa &copy; 2026. Your journey starts here.
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Sticky WhatsApp CTA -->
+    <div class="sticky-cta">
+        <div class="container">
+            <button type="button" class="btn-whatsapp" id="submitBtn">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                Send Enquiry on WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('checkin').setAttribute('min', today);
+        document.getElementById('checkout').setAttribute('min', today);
+
+        document.getElementById('checkin').addEventListener('change', function() {
+            document.getElementById('checkout').setAttribute('min', this.value);
+            if (document.getElementById('checkout').value && document.getElementById('checkout').value < this.value) {
+                document.getElementById('checkout').value = '';
+            }
+        });
+
+        document.getElementById('children').addEventListener('change', function() {
+            document.getElementById('childrenAgesGroup').style.display = this.value > 0 ? 'block' : 'none';
+        });
+
+        document.querySelectorAll('.form-input, .form-select').forEach(function(input) {
+            input.addEventListener('input', function() {
+                this.classList.remove('error');
+                const errorEl = document.getElementById(this.id + 'Error');
+                if (errorEl) errorEl.classList.remove('visible');
+            });
+        });
+
+        function validateForm() {
+            let isValid = true;
+            const requiredFields = [
+                { id: 'destination', errorId: 'destinationError' },
+                { id: 'checkin', errorId: 'checkinError' },
+                { id: 'checkout', errorId: 'checkoutError' },
+                { id: 'adults', errorId: 'adultsError' },
+                { id: 'name', errorId: 'nameError' },
+                { id: 'phone', errorId: 'phoneError' }
+            ];
+
+            requiredFields.forEach(function(field) {
+                const el = document.getElementById(field.id);
+                const errorEl = document.getElementById(field.errorId);
+                if (!el.value.trim()) {
+                    el.classList.add('error');
+                    if (errorEl) errorEl.classList.add('visible');
+                    isValid = false;
+                }
+            });
+
+            if (!isValid) {
+                const firstError = document.querySelector('.form-input.error, .form-select.error');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+
+            return isValid;
+        }
+
+        function formatDate(dateStr) {
+            if (!dateStr) return '';
+            const date = new Date(dateStr + 'T00:00:00');
+            return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+        }
+
+        function generateMessage() {
+            const data = {
+                destination: document.getElementById('destination').value.trim(),
+                checkin: formatDate(document.getElementById('checkin').value),
+                checkout: formatDate(document.getElementById('checkout').value),
+                adults: document.getElementById('adults').value,
+                children: document.getElementById('children').value,
+                childrenAges: document.getElementById('childrenAges').value.trim(),
+                nationality: document.getElementById('nationality').value.trim(),
+                stayType: document.getElementById('stayType').value,
+                roomType: document.getElementById('roomType').value,
+                budget: document.getElementById('budget').value.trim(),
+                requests: document.getElementById('requests').value.trim(),
+                name: document.getElementById('name').value.trim(),
+                phone: document.getElementById('phone').value.trim()
+            };
+
+            let msg = `Hi Trippa 👋\n\n`;
+            msg += `I'd like help finding a stay:\n\n`;
+            msg += `📍 Destination: ${data.destination}\n`;
+            msg += `📅 Dates: ${data.checkin} - ${data.checkout}\n\n`;
+            msg += `👥 Guests:\n`;
+            msg += `• Adults: ${data.adults}\n`;
+            msg += `• Children: ${data.children}`;
+            if (data.children > 0 && data.childrenAges) {
+                msg += ` (Ages: ${data.childrenAges})`;
+            }
+            msg += `\n`;
+            if (data.nationality) {
+                msg += `🌍 Nationality: ${data.nationality}\n`;
+            }
+            msg += `\n`;
+            if (data.stayType) {
+                msg += `🏡 Stay Type: ${data.stayType}\n`;
+            }
+            if (data.roomType) {
+                msg += `🛏 Room Type: ${data.roomType}\n`;
+            }
+            if (data.budget) {
+                msg += `\n💰 Budget: ${data.budget}\n`;
+            }
+            if (data.requests) {
+                msg += `\n✨ Special requests: ${data.requests}\n`;
+            }
+            msg += `\nName: ${data.name}\n`;
+            msg += `Phone: ${data.phone}`;
+
+            return msg;
+        }
+
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            if (!validateForm()) return;
+
+            const message = generateMessage();
+            const whatsappNumber = '265983311818';
+            const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        });
+    </script>
+</body>
+</html>

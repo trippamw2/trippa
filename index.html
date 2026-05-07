@@ -1681,11 +1681,6 @@
             if (document.getElementById('checkout').value < this.value) document.getElementById('checkout').value = '';
         });
 
-        // Children ages toggle
-        document.getElementById('children').addEventListener('change', function() {
-            document.getElementById('childrenAgesGroup').style.display = this.value > 0 ? 'block' : 'none';
-        });
-
         // Clear errors on input
         document.querySelectorAll('.form-input, .form-select').forEach(function(input) {
             input.addEventListener('input', function() {
@@ -1736,8 +1731,6 @@
         // Generate WhatsApp message
         function generateMessage() {
             var tripType = getSelectedChips('tripTypeGroup');
-            var vibe = getSelectedChips('vibeGroup');
-            var amenities = getSelectedChips('amenitiesGroup');
 
             var d = {
                 destination: document.getElementById('destination').value,
@@ -1745,14 +1738,7 @@
                 checkout: formatDate(document.getElementById('checkout').value),
                 tripType: tripType,
                 guests: document.getElementById('guests').value,
-                children: document.getElementById('children').value,
-                childrenAges: document.getElementById('childrenAges').value.trim(),
-                propertyType: document.getElementById('propertyType').value || 'Not specified',
-                roomType: document.getElementById('roomType').value || 'Not specified',
-                vibe: vibe,
                 budget: document.getElementById('budget').value,
-                amenities: amenities,
-                romanticSetup: document.getElementById('romanticSetup').value || 'Not specified',
                 perfectEscape: document.getElementById('perfectEscape').value.trim(),
                 name: document.getElementById('name').value.trim(),
                 phone: document.getElementById('phone').value.trim()
@@ -1762,20 +1748,8 @@
             msg += '📍 Destination: ' + d.destination + '\n';
             msg += '📅 Dates: ' + d.checkin + ' - ' + d.checkout + '\n\n';
             msg += '👥 Trip Type: ' + d.tripType + '\n';
-            msg += '• Guests: ' + d.guests;
-            if (d.children > 0) {
-                msg += ' (incl. ' + d.children + ' child';
-                if (d.children > 1) msg += 'ren';
-                msg += ')';
-                if (d.childrenAges) msg += ' — Ages: ' + d.childrenAges;
-            }
-            msg += '\n\n';
-            msg += '🏨 Property: ' + d.propertyType + '\n';
-            msg += '🛏 Room: ' + d.roomType + '\n';
-            msg += '🎯 Vibe: ' + d.vibe + '\n\n';
+            msg += '• Guests: ' + d.guests + '\n\n';
             msg += '💰 Budget: ' + d.budget + '/night\n';
-            msg += '✨ Preferences: ' + d.amenities + '\n';
-            msg += '🌹 Romantic Setup: ' + d.romanticSetup + '\n';
             if (d.perfectEscape) {
                 msg += '\n💬 My Perfect Escape:\n' + d.perfectEscape + '\n';
             }

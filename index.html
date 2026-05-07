@@ -731,21 +731,23 @@
             color: var(--text-light);
         }
 
-        .form-group { margin-bottom: 14px; }
+        .form-group { margin-bottom: 16px; }
         .form-group:last-child { margin-bottom: 0; }
 
         .form-label {
             display: block;
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 12px;
+            font-weight: 600;
             color: var(--text-light);
-            margin-bottom: 6px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .form-input, .form-select, .form-textarea {
             width: 100%;
-            padding: 13px 14px;
-            font-size: 16px;
+            padding: 14px 16px;
+            font-size: 15px;
             font-family: 'Inter', sans-serif;
             color: var(--dark);
             background: var(--white);
@@ -768,7 +770,8 @@
             padding-right: 36px;
         }
 
-        .form-textarea { min-height: 80px; resize: vertical; }
+        .form-textarea { min-height: 100px; resize: vertical; line-height: 1.6; }
+        .form-textarea::placeholder { color: #B5AFA8; font-style: italic; }
 
         .form-row {
             display: grid;
@@ -792,38 +795,115 @@
         .divider {
             height: 1px;
             background: #E5E0DA;
-            margin: 18px 0;
+            margin: 20px 0;
         }
 
         .section-label-form {
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
             color: var(--dark);
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(201,149,107,0.15);
+        }
+        .section-label-form .sec-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(201,149,107,0.12), rgba(201,149,107,0.06));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
         }
 
+        /* Chip Selectors */
+        .chip-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .chip {
+            padding: 10px 18px;
+            border-radius: 50px;
+            border: 1.5px solid #D4A574;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            white-space: nowrap;
+            user-select: none;
+        }
+        .chip:hover {
+            border-color: var(--gold);
+            background: rgba(201,149,107,0.06);
+        }
+        .chip.selected {
+            background: linear-gradient(135deg, #C9956B, #D4A574);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 2px 8px rgba(201,149,107,0.3);
+        }
+
+        /* Scrollable chip row for vibe */
+        .chip-scroll {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .chip-scroll::-webkit-scrollbar { display: none; }
+
+        /* Premium textarea */
+        .textarea-premium {
+            background: linear-gradient(135deg, var(--white), #FDFCFA);
+            border: 1.5px solid #E5E0DA;
+            border-radius: 14px;
+            padding: 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--dark);
+            min-height: 100px;
+            resize: vertical;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .textarea-premium:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(201,149,107,0.15);
+        }
+        .textarea-premium::placeholder { color: #B5AFA8; font-style: italic; }
+
+        /* Submit Button */
         .btn-submit {
             width: 100%;
-            padding: 16px;
+            padding: 18px;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 700;
             font-family: 'Inter', sans-serif;
             color: var(--white);
-            background: #25D366;
+            background: linear-gradient(135deg, #25D366, #1EB956);
             border: none;
             border-radius: 14px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            margin-top: 20px;
-            box-shadow: 0 4px 14px rgba(37,211,102,0.35);
+            gap: 10px;
+            margin-top: 24px;
+            box-shadow: 0 6px 20px rgba(37,211,102,0.35);
+            letter-spacing: 0.3px;
         }
-
         .btn-submit:active { transform: scale(0.98); }
         .btn-submit svg { width: 20px; height: 20px; }
 
@@ -1314,7 +1394,8 @@
                 <button class="modal-close" onclick="closeModal()">✕</button>
             </div>
             <form id="enquiryForm" novalidate>
-                <div class="section-label-form">📍 Destination</div>
+                <!-- Section 1: Destination -->
+                <div class="section-label-form"><span class="sec-icon">📍</span> Where to?</div>
                 <div class="form-group">
                     <select id="destination" class="form-select" required>
                         <option value="" disabled selected>Select destination</option>
@@ -1334,7 +1415,7 @@
                 </div>
 
                 <div class="divider"></div>
-                <div class="section-label-form">📅 Travel Dates</div>
+                <div class="section-label-form"><span class="sec-icon">📅</span> When?</div>
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form-label" for="checkin">Check-in</label>
@@ -1349,96 +1430,107 @@
                 </div>
 
                 <div class="divider"></div>
-                <div class="section-label-form">👥 Guest Details</div>
+                <div class="section-label-form"><span class="sec-icon">👥</span> Who's going?</div>
+                <div class="form-group">
+                    <label class="form-label">Trip type</label>
+                    <div class="chip-group" id="tripTypeGroup">
+                        <button type="button" class="chip" data-value="Couple" onclick="toggleSingleChip(this, 'tripTypeGroup')">Couple</button>
+                        <button type="button" class="chip" data-value="Friends" onclick="toggleSingleChip(this, 'tripTypeGroup')">Friends</button>
+                        <button type="button" class="chip" data-value="Family" onclick="toggleSingleChip(this, 'tripTypeGroup')">Family</button>
+                        <button type="button" class="chip" data-value="Solo" onclick="toggleSingleChip(this, 'tripTypeGroup')">Solo</button>
+                    </div>
+                </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label class="form-label">Adults</label>
-                        <select id="adults" class="form-select" required>
+                        <label class="form-label" for="guests">Number of guests</label>
+                        <select id="guests" class="form-select" required>
                             <option value="" disabled selected>Select</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                             <option value="5">5</option>
-                            <option value="6">6+</option>
+                            <option value="6+">6+</option>
                         </select>
-                        <div class="error-msg" id="adultsError">Required</div>
+                        <div class="error-msg" id="guestsError">Required</div>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Children</label>
-                        <select id="children" class="form-select" required>
-                            <option value="" disabled selected>Select</option>
+                        <label class="form-label" for="children">Children</label>
+                        <select id="children" class="form-select">
                             <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                         </select>
-                        <div class="error-msg" id="childrenError">Required</div>
                     </div>
                 </div>
                 <div class="form-group" id="childrenAgesGroup" style="display:none;">
                     <label class="form-label" for="childrenAges">Children's Ages</label>
                     <input type="text" id="childrenAges" class="form-input" placeholder="e.g. 5, 8, 12">
                 </div>
+
+                <div class="divider"></div>
+                <div class="section-label-form"><span class="sec-icon">🏨</span> Property Type</div>
                 <div class="form-group">
-                    <label class="form-label">Nationality</label>
-                    <select id="nationality" class="form-select" required>
-                        <option value="" disabled selected>Select nationality</option>
-                        <option value="Malawian">Malawian</option>
-                        <option value="South African">South African</option>
-                        <option value="British">British</option>
-                        <option value="Mozambican">Mozambican</option>
-                        <option value="Zambian">Zambian</option>
-                        <option value="Zimbabwean">Zimbabwean</option>
-                        <option value="American">American</option>
-                        <option value="Canadian">Canadian</option>
-                        <option value="Indian">Indian</option>
-                        <option value="Chinese">Chinese</option>
-                        <option value="German">German</option>
-                        <option value="French">French</option>
-                        <option value="Italian">Italian</option>
-                        <option value="Dutch">Dutch</option>
-                        <option value="Spanish">Spanish</option>
-                        <option value="Portuguese">Portuguese</option>
-                        <option value="Australian">Australian</option>
-                        <option value="Kenyan">Kenyan</option>
-                        <option value="Nigerian">Nigerian</option>
-                        <option value="Tanzanian">Tanzanian</option>
-                        <option value="Ghanaian">Ghanaian</option>
-                        <option value="Other">Other</option>
+                    <select id="propertyType" class="form-select">
+                        <option value="" disabled selected>Select property type</option>
+                        <option value="Boutique Villa">Boutique Villa</option>
+                        <option value="Luxury Apartment">Luxury Apartment</option>
+                        <option value="Private Villa">Private Villa</option>
+                        <option value="Pool Villa">Pool Villa</option>
+                        <option value="Executive Guesthouse">Executive Guesthouse</option>
+                        <option value="Boutique Guesthouse">Boutique Guesthouse</option>
+                        <option value="Beach Resort">Beach Resort</option>
+                        <option value="Lakeside Lodge">Lakeside Lodge</option>
+                        <option value="Nature Retreat">Nature Retreat</option>
+                        <option value="Mountain Lodge">Mountain Lodge</option>
+                        <option value="Tea Estate Retreat">Tea Estate Retreat</option>
+                        <option value="Private Chalet">Private Chalet</option>
+                        <option value="Luxury Cabin">Luxury Cabin</option>
+                        <option value="Eco Retreat">Eco Retreat</option>
+                        <option value="Penthouse Apartment">Penthouse Apartment</option>
+                        <option value="Hidden Luxury Home">Hidden Luxury Home</option>
                     </select>
-                    <div class="error-msg" id="nationalityError">Required</div>
                 </div>
 
                 <div class="divider"></div>
-                <div class="section-label-form">🏡 Stay Preferences</div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">Type of Stay</label>
-                        <select id="stayType" class="form-select" required>
-                            <option value="" disabled selected>Select</option>
-                            <option value="Villa">Villa</option>
-                            <option value="Apartment">Apartment</option>
-                            <option value="House">House</option>
-                            <option value="Room in a Lodge">Room in a Lodge</option>
-                            <option value="Room in a Hotel">Room in a Hotel</option>
-                        </select>
-                        <div class="error-msg" id="stayTypeError">Required</div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Room Type</label>
-                        <select id="roomType" class="form-select" required>
-                            <option value="" disabled selected>Select</option>
-                            <option value="Single">Single</option>
-                            <option value="Double">Double</option>
-                            <option value="Deluxe">Deluxe</option>
-                        </select>
-                        <div class="error-msg" id="roomTypeError">Required</div>
+                <div class="section-label-form"><span class="sec-icon">🛏️</span> Room Type</div>
+                <div class="form-group">
+                    <select id="roomType" class="form-select">
+                        <option value="" disabled selected>Select room type</option>
+                        <option value="Honeymoon Suite">Honeymoon Suite</option>
+                        <option value="Executive Suite">Executive Suite</option>
+                        <option value="Deluxe King Room">Deluxe King Room</option>
+                        <option value="Pool View Room">Pool View Room</option>
+                        <option value="Lake View Room">Lake View Room</option>
+                        <option value="Private Chalet">Private Chalet</option>
+                        <option value="Luxury Apartment Suite">Luxury Apartment Suite</option>
+                        <option value="Penthouse Suite">Penthouse Suite</option>
+                        <option value="Couple's Retreat Room">Couple's Retreat Room</option>
+                        <option value="Family Villa">Family Villa</option>
+                        <option value="Entire Private Home">Entire Private Home</option>
+                    </select>
+                </div>
+
+                <div class="divider"></div>
+                <div class="section-label-form"><span class="sec-icon">🎯</span> Preferred Vibe</div>
+                <div class="form-group">
+                    <div class="chip-group" id="vibeGroup">
+                        <button type="button" class="chip" data-value="Romantic" onclick="toggleSingleChip(this, 'vibeGroup')">Romantic</button>
+                        <button type="button" class="chip" data-value="Luxury" onclick="toggleSingleChip(this, 'vibeGroup')">Luxury</button>
+                        <button type="button" class="chip" data-value="Relaxing" onclick="toggleSingleChip(this, 'vibeGroup')">Relaxing</button>
+                        <button type="button" class="chip" data-value="Adventure" onclick="toggleSingleChip(this, 'vibeGroup')">Adventure</button>
+                        <button type="button" class="chip" data-value="Nature Escape" onclick="toggleSingleChip(this, 'vibeGroup')">Nature Escape</button>
+                        <button type="button" class="chip" data-value="Surprise Getaway" onclick="toggleSingleChip(this, 'vibeGroup')">Surprise Getaway</button>
+                        <button type="button" class="chip" data-value="Aesthetic Weekend" onclick="toggleSingleChip(this, 'vibeGroup')">Aesthetic Weekend</button>
+                        <button type="button" class="chip" data-value="Private Escape" onclick="toggleSingleChip(this, 'vibeGroup')">Private Escape</button>
                     </div>
                 </div>
+
+                <div class="divider"></div>
+                <div class="section-label-form"><span class="sec-icon">💰</span> Budget Range</div>
                 <div class="form-group">
-                    <label class="form-label">Budget Range</label>
                     <select id="budget" class="form-select" required>
                         <option value="" disabled selected>Select budget (MWK per night)</option>
                         <option value="MWK 150K">MWK 150K per night</option>
@@ -1454,13 +1546,48 @@
                 </div>
 
                 <div class="divider"></div>
-                <div class="section-label-form">✨ Special Requests</div>
+                <div class="section-label-form"><span class="sec-icon">✨</span> Pool & Amenities</div>
                 <div class="form-group">
-                    <textarea id="requests" class="form-textarea" placeholder="Candle setup, champagne, surprise..."></textarea>
+                    <div class="chip-group" id="amenitiesGroup">
+                        <button type="button" class="chip" data-value="Private Pool" onclick="toggleChip(this)">Private Pool</button>
+                        <button type="button" class="chip" data-value="Shared Pool" onclick="toggleChip(this)">Shared Pool</button>
+                        <button type="button" class="chip" data-value="Romantic Setup" onclick="toggleChip(this)">Romantic Setup</button>
+                        <button type="button" class="chip" data-value="Lake View" onclick="toggleChip(this)">Lake View</button>
+                        <button type="button" class="chip" data-value="Mountain View" onclick="toggleChip(this)">Mountain View</button>
+                        <button type="button" class="chip" data-value="Balcony" onclick="toggleChip(this)">Balcony</button>
+                        <button type="button" class="chip" data-value="Bathtub" onclick="toggleChip(this)">Bathtub</button>
+                        <button type="button" class="chip" data-value="Breakfast Included" onclick="toggleChip(this)">Breakfast Included</button>
+                        <button type="button" class="chip" data-value="Couple Friendly" onclick="toggleChip(this)">Couple Friendly</button>
+                        <button type="button" class="chip" data-value="Nature Escape" onclick="toggleChip(this)">Nature Escape</button>
+                        <button type="button" class="chip" data-value="City Escape" onclick="toggleChip(this)">City Escape</button>
+                        <button type="button" class="chip" data-value="Luxury Experience" onclick="toggleChip(this)">Luxury Experience</button>
+                        <button type="button" class="chip" data-value="Budget Friendly" onclick="toggleChip(this)">Budget Friendly</button>
+                        <button type="button" class="chip" data-value="Weekend Getaway" onclick="toggleChip(this)">Weekend Getaway</button>
+                    </div>
                 </div>
 
                 <div class="divider"></div>
-                <div class="section-label-form">👤 Contact Info</div>
+                <div class="section-label-form"><span class="sec-icon">🌹</span> Romantic Setup</div>
+                <div class="form-group">
+                    <select id="romanticSetup" class="form-select">
+                        <option value="" disabled selected>Select romantic setup</option>
+                        <option value="None">None</option>
+                        <option value="Candle & Rose Petals">Candle & Rose Petals</option>
+                        <option value="Champagne & Strawberries">Champagne & Strawberries</option>
+                        <option value="Flower Crown Setup">Flower Crown Setup</option>
+                        <option value="Surprise Decoration">Surprise Decoration</option>
+                        <option value="Custom Setup">Custom Setup</option>
+                    </select>
+                </div>
+
+                <div class="divider"></div>
+                <div class="section-label-form"><span class="sec-icon">💬</span> Describe Your Perfect Escape</div>
+                <div class="form-group">
+                    <textarea id="perfectEscape" class="textarea-premium" placeholder="Tell us the kind of experience you want — romantic, peaceful, luxury, surprise weekend, lakeside, poolside, nature escape, etc."></textarea>
+                </div>
+
+                <div class="divider"></div>
+                <div class="section-label-form"><span class="sec-icon">👤</span> Your Details</div>
                 <div class="form-group">
                     <label class="form-label">Full Name</label>
                     <input type="text" id="name" class="form-input" placeholder="Your full name" required>
@@ -1468,13 +1595,13 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">Phone Number</label>
-                    <input type="tel" id="phone" class="form-input" placeholder="+265 983 311 818" required>
+                    <input type="tel" id="phone" class="form-input" placeholder="+265..." required>
                     <div class="error-msg" id="phoneError">Required</div>
                 </div>
 
                 <button type="button" class="btn-submit" onclick="submitForm()">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                    Send on WhatsApp
+                    Plan My Escape
                 </button>
             </form>
         </div>
@@ -1508,6 +1635,18 @@
             }
         }
 
+        // Chip toggle (multi-select for amenities)
+        function toggleChip(chip) {
+            chip.classList.toggle('selected');
+        }
+
+        // Single chip select (for trip type, vibe)
+        function toggleSingleChip(chip, groupId) {
+            var group = document.getElementById(groupId);
+            group.querySelectorAll('.chip').forEach(function(c) { c.classList.remove('selected'); });
+            chip.classList.add('selected');
+        }
+
         // Min dates
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('checkin').setAttribute('min', today);
@@ -1531,12 +1670,11 @@
             });
         });
 
-        // Validate
+        // Validate (required: destination, checkin, checkout, guests, budget, name, phone)
         function validateForm() {
             let valid = true;
             const fields = [
-                'destination','checkin','checkout','adults','children','nationality',
-                'stayType','roomType','budget','name','phone'
+                'destination','checkin','checkout','guests','budget','name','phone'
             ];
             fields.forEach(function(id) {
                 const el = document.getElementById(id);
@@ -1556,50 +1694,76 @@
 
         // Format date
         function formatDate(d) {
-            if (!d) return '';
+            if (!d) return 'Flexible';
             const date = new Date(d + 'T00:00:00');
             return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
         }
 
-        // Generate message
+        // Get selected chips from a group
+        function getSelectedChips(groupId) {
+            var selected = [];
+            document.querySelectorAll('#' + groupId + ' .chip.selected').forEach(function(chip) {
+                selected.push(chip.getAttribute('data-value'));
+            });
+            return selected.length > 0 ? selected.join(', ') : 'Not specified';
+        }
+
+        // Generate WhatsApp message
         function generateMessage() {
-            const d = {
+            var tripType = getSelectedChips('tripTypeGroup');
+            var vibe = getSelectedChips('vibeGroup');
+            var amenities = getSelectedChips('amenitiesGroup');
+
+            var d = {
                 destination: document.getElementById('destination').value,
                 checkin: formatDate(document.getElementById('checkin').value),
                 checkout: formatDate(document.getElementById('checkout').value),
-                adults: document.getElementById('adults').value,
+                tripType: tripType,
+                guests: document.getElementById('guests').value,
                 children: document.getElementById('children').value,
                 childrenAges: document.getElementById('childrenAges').value.trim(),
-                nationality: document.getElementById('nationality').value,
-                stayType: document.getElementById('stayType').value,
-                roomType: document.getElementById('roomType').value,
+                propertyType: document.getElementById('propertyType').value || 'Not specified',
+                roomType: document.getElementById('roomType').value || 'Not specified',
+                vibe: vibe,
                 budget: document.getElementById('budget').value,
-                requests: document.getElementById('requests').value.trim(),
+                amenities: amenities,
+                romanticSetup: document.getElementById('romanticSetup').value || 'Not specified',
+                perfectEscape: document.getElementById('perfectEscape').value.trim(),
                 name: document.getElementById('name').value.trim(),
                 phone: document.getElementById('phone').value.trim()
             };
 
-            let msg = `Hi Trippa 👋\n\nI'd like to plan a romantic escape:\n\n`;
-            msg += `📍 Destination: ${d.destination}\n`;
-            msg += `📅 Dates: ${d.checkin} - ${d.checkout}\n\n`;
-            msg += `👥 Guests:\n`;
-            msg += `• Adults: ${d.adults}\n`;
-            msg += `• Children: ${d.children}`;
-            if (d.children > 0 && d.childrenAges) msg += ` (Ages: ${d.childrenAges})`;
-            msg += `\n🌍 Nationality: ${d.nationality}\n\n`;
-            msg += `🏡 Stay Type: ${d.stayType}\n`;
-            msg += `🛏 Room Type: ${d.roomType}\n`;
-            msg += `💰 Budget: ${d.budget}\n`;
-            if (d.requests) msg += `\n✨ Special requests: ${d.requests}\n`;
-            msg += `\nName: ${d.name}\nPhone: ${d.phone}`;
+            var msg = 'Hi Trippa ✨\n\nI\'d like to plan my perfect escape:\n\n';
+            msg += '📍 Destination: ' + d.destination + '\n';
+            msg += '📅 Dates: ' + d.checkin + ' - ' + d.checkout + '\n\n';
+            msg += '👥 Trip Type: ' + d.tripType + '\n';
+            msg += '• Guests: ' + d.guests;
+            if (d.children > 0) {
+                msg += ' (incl. ' + d.children + ' child';
+                if (d.children > 1) msg += 'ren';
+                msg += ')';
+                if (d.childrenAges) msg += ' — Ages: ' + d.childrenAges;
+            }
+            msg += '\n\n';
+            msg += '🏨 Property: ' + d.propertyType + '\n';
+            msg += '🛏 Room: ' + d.roomType + '\n';
+            msg += '🎯 Vibe: ' + d.vibe + '\n\n';
+            msg += '💰 Budget: ' + d.budget + '/night\n';
+            msg += '✨ Preferences: ' + d.amenities + '\n';
+            msg += '🌹 Romantic Setup: ' + d.romanticSetup + '\n';
+            if (d.perfectEscape) {
+                msg += '\n💬 My Perfect Escape:\n' + d.perfectEscape + '\n';
+            }
+            msg += '\nName: ' + d.name + '\n';
+            msg += 'Phone: ' + d.phone;
             return msg;
         }
 
         // Submit
         function submitForm() {
             if (!validateForm()) return;
-            const message = generateMessage();
-            const url = `https://wa.me/265983311818?text=${encodeURIComponent(message)}`;
+            var message = generateMessage();
+            var url = 'https://wa.me/265983311818?text=' + encodeURIComponent(message);
             window.open(url, '_blank');
             closeModal();
         }

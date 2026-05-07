@@ -361,8 +361,6 @@
             border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
-        .offer-item:last-child { border-bottom: none; }
-
         .offer-check {
             width: 24px;
             height: 24px;
@@ -388,6 +386,54 @@
         .offer-item-text p {
             color: rgba(255,255,255,0.5);
             font-size: 13px;
+        }
+
+        .offer-value {
+            color: rgba(201,149,107,0.6);
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+            margin-left: auto;
+            padding-left: 8px;
+            text-decoration: line-through;
+            flex-shrink: 0;
+        }
+
+        .offer-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0 8px;
+            border-top: 2px solid rgba(201,149,107,0.3);
+            margin-top: 8px;
+        }
+        .offer-total span:first-child {
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+        }
+        .offer-total-value {
+            color: rgba(201,149,107,0.8);
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: line-through;
+        }
+
+        .offer-price {
+            text-align: center;
+            padding: 20px 0 8px;
+        }
+        .offer-price-label {
+            display: block;
+            color: rgba(255,255,255,0.5);
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        .offer-price-value {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--gold-light);
         }
 
         .offer-cta {
@@ -1021,6 +1067,34 @@
         .urgency-bar p {
             font-size: 15px;
             line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 4px;
+        }
+        .countdown-block {
+            background: rgba(255,255,255,0.18);
+            border-radius: 8px;
+            padding: 6px 12px;
+            min-width: 56px;
+            text-align: center;
+            backdrop-filter: blur(4px);
+        }
+        .countdown-num {
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1.2;
+            display: block;
+        }
+        .countdown-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.85;
+            display: block;
         }
 
         @media (min-width: 768px) {
@@ -1041,17 +1115,17 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <img src="https://i.postimg.cc/pLRpK4Bd/trippa-logo.png" alt="Trippa" class="hero-logo">
-            <h1>Plan the perfect romantic <em>pool escape</em> in 24 hours.</h1>
-            <p class="hero-sub">Private pool stays curated for unforgettable weekends. No stress searching, comparing, or planning everything yourself.</p>
+            <h1>Plan a romantic weekend with a <em>private pool</em>. Done in 24 hours.</h1>
+            <p class="hero-sub">We find you the best pool stays in Malawi. No stress. No searching. Just tell us what you want and we handle the rest.</p>
             <button class="btn-primary" onclick="openModal()">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                 Plan My Escape
             </button>
-            <p class="hero-trust">Curated romantic escapes for couples in Malawi.</p>
+            <p class="hero-trust">Romantic pool stays. All over Malawi.</p>
             <div class="hero-badges">
-                <span class="hero-badge">⚡ 24hr planning</span>
-                <span class="hero-badge">💎 Curated stays</span>
-                <span class="hero-badge">⭐ 4.9/5</span>
+                <span class="hero-badge">⚡ 24hr response</span>
+                <span class="hero-badge">💎 Hand-picked stays</span>
+                <span class="hero-badge">⭐ 500+ couples helped</span>
             </div>
         </div>
         <div class="scroll-indicator">
@@ -1062,34 +1136,34 @@
     <!-- VALUE PROPOSITION -->
     <section class="value-section">
         <div class="container reveal">
-            <p class="section-label">Why Trippa</p>
-            <h2>We don't just book stays. We create <em>unforgettable</em> moments.</h2>
-            <p class="subtitle">Romance, privacy, and curated luxury. Zero stress planning.</p>
+            <p class="section-label">Why Choose Trippa</p>
+            <h2>We plan your weekend. You make the <em>memories</em>.</h2>
+            <p class="subtitle">Private pools. Romantic touches. Zero stress.</p>
             <div class="value-grid">
                 <div class="value-card">
                     <div class="icon">🏊</div>
                     <h3>Private Pools</h3>
-                    <p>Exclusive pool-only stays, never crowded</p>
+                    <p>No shared pools. Just you two.</p>
                 </div>
                 <div class="value-card">
                     <div class="icon">🌹</div>
-                    <h3>Romantic Setups</h3>
+                    <h3>Romantic Touches</h3>
                     <p>Candles, flowers, champagne on request</p>
                 </div>
                 <div class="value-card">
                     <div class="icon">✨</div>
-                    <h3>Personalized Escapes</h3>
-                    <p>Tailored to your vibe and budget</p>
+                    <h3>Made for You</h3>
+                    <p>Fits your vibe and your budget</p>
                 </div>
                 <div class="value-card">
                     <div class="icon">⚡</div>
-                    <h3>Fast Planning</h3>
-                    <p>Your escape curated within 24 hours</p>
+                    <h3>Fast Response</h3>
+                    <p>We plan your escape within a day</p>
                 </div>
                 <div class="value-card">
                     <div class="icon">🔒</div>
-                    <h3>Verified Stays</h3>
-                    <p>Every stay personally vetted by Trippa</p>
+                    <h3>Trusted Picks</h3>
+                    <p>Every place we know and trust</p>
                 </div>
             </div>
         </div>
@@ -1098,26 +1172,26 @@
     <!-- HOW IT WORKS -->
     <section class="how-section">
         <div class="container reveal">
-            <p class="section-label">How it works</p>
-            <h2>Your escape in 3 simple steps</h2>
+            <p class="section-label">How It Works</p>
+            <h2>Your weekend sorted in 3 steps</h2>
             <div class="steps">
                 <div class="step">
                     <div class="step-icon">💬</div>
                     <div class="step-number">01</div>
-                    <h3>Tell us your vibe</h3>
-                    <p>Budget, dates, city, style. Just a few details</p>
+                    <h3>Tell us what you want</h3>
+                    <p>Where, when, and your budget. Takes 30 seconds.</p>
                 </div>
                 <div class="step">
                     <div class="step-icon">🎯</div>
                     <div class="step-number">02</div>
-                    <h3>We curate your escape</h3>
-                    <p>Handpicked romantic pool stays just for you</p>
+                    <h3>We send 3 perfect picks</h3>
+                    <p>Hand-picked pool stays within 24 hours on WhatsApp</p>
                 </div>
                 <div class="step">
                     <div class="step-icon">🥂</div>
                     <div class="step-number">03</div>
-                    <h3>You enjoy the moment</h3>
-                    <p>We handle the planning. You make the memories.</p>
+                    <h3>You show up and enjoy</h3>
+                    <p>We plan. You relax. Your partner will love it.</p>
                 </div>
             </div>
         </div>
@@ -1126,58 +1200,65 @@
     <!-- OFFER SECTION -->
     <section class="offer-section">
         <div class="container reveal">
-            <p class="section-label">What you get</p>
-            <h2>Everything included in your escape plan</h2>
+            <p class="section-label">What You Get</p>
+            <h2>Everything included. All free.</h2>
             <div class="offer-card">
-                <h3>Your Escape Package</h3>
+                <h3>Your Romantic Escape Package</h3>
                 <div class="offer-item">
                     <div class="offer-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="offer-item-text">
-                        <h4>Private romantic pool stay</h4>
-                        <p>Handpicked for couples</p>
+                        <h4>Personalized Escape Plan</h4>
+                        <p>Hand-picked pool stays for your weekend</p>
                     </div>
+                    <span class="offer-value">MWK 50,000</span>
                 </div>
                 <div class="offer-item">
                     <div class="offer-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="offer-item-text">
-                        <h4>Personalized recommendations</h4>
-                        <p>Based on your preferences</p>
+                        <h4>Romantic Setup Coordination</h4>
+                        <p>Candles, flowers, champagne — we arrange it</p>
                     </div>
+                    <span class="offer-value">MWK 25,000</span>
                 </div>
                 <div class="offer-item">
                     <div class="offer-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="offer-item-text">
-                        <h4>Fast WhatsApp planning</h4>
-                        <p>Your plan within 24 hours</p>
+                        <h4>Local Restaurant & Activity Guide</h4>
+                        <p>Best dining and experiences near your stay</p>
                     </div>
+                    <span class="offer-value">MWK 20,000</span>
                 </div>
                 <div class="offer-item">
                     <div class="offer-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="offer-item-text">
-                        <h4>Romantic setup options</h4>
-                        <p>Candles, flowers, champagne</p>
+                        <h4>Priority Booking Support</h4>
+                        <p>We push your booking to the top</p>
                     </div>
+                    <span class="offer-value">MWK 15,000</span>
                 </div>
                 <div class="offer-item">
                     <div class="offer-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="offer-item-text">
-                        <h4>Curated local experiences</h4>
-                        <p>Dining, activities, surprises</p>
+                        <h4>Backup Plan Guarantee</h4>
+                        <p>Always a plan B if things change</p>
                     </div>
+                    <span class="offer-value">MWK 15,000</span>
                 </div>
                 <div class="offer-item">
                     <div class="offer-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="offer-item-text">
-                        <h4>Backup options guaranteed</h4>
-                        <p>Always have a plan B</p>
+                        <h4>WhatsApp Concierge Support</h4>
+                        <p>Real person helping you the whole way</p>
                     </div>
+                    <span class="offer-value">MWK 10,000</span>
                 </div>
-                <div class="offer-item">
-                    <div class="offer-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <div class="offer-item-text">
-                        <h4>Dedicated concierge support</h4>
-                        <p>We are with you the whole way</p>
-                    </div>
+                <div class="offer-total">
+                    <span>Total value</span>
+                    <span class="offer-total-value">MWK 135,000</span>
+                </div>
+                <div class="offer-price">
+                    <span class="offer-price-label">Your price today</span>
+                    <span class="offer-price-value">FREE</span>
                 </div>
                 <div class="offer-cta">
                     <button class="btn-primary" onclick="openModal()">Get My Free Escape Plan</button>
@@ -1193,7 +1274,7 @@
                 <h3>What planning this yourself actually costs</h3>
                 <div class="anchor-row">
                     <span>Hours spent searching and comparing stays</span>
-                    <span class="anchor-cost">6-10 hours</span>
+                    <span class="anchor-cost">6 to 10 hours</span>
                 </div>
                 <div class="anchor-row">
                     <span>Risk of a bad stay ruining the weekend</span>
@@ -1201,7 +1282,7 @@
                 </div>
                 <div class="anchor-row">
                     <span>Planning romantic setups from scratch</span>
-                    <span class="anchor-cost">4+ hours</span>
+                    <span class="anchor-cost">4 plus hours</span>
                 </div>
                 <div class="anchor-row">
                     <span>Stress of last minute bookings</span>
@@ -1211,7 +1292,7 @@
                     <span>What Trippa does for you</span>
                     <span class="anchor-free">FREE</span>
                 </div>
-                <p class="anchor-note">We make our money from the stay providers. You pay nothing extra for our planning service.</p>
+                <p class="anchor-note">We get paid by the stays. You pay nothing extra for our service.</p>
             </div>
         </div>
     </section>
@@ -1221,8 +1302,8 @@
         <div class="emotional-bg"></div>
         <div class="emotional-overlay"></div>
         <div class="emotional-content reveal">
-            <h2>This is not just accommodation.</h2>
-            <p>"It is the weekend your partner will never forget."</p>
+            <h2>This is not just a hotel room.</h2>
+            <p>"It is the weekend your partner will talk about for years."</p>
         </div>
     </section>
 
@@ -1232,13 +1313,13 @@
             <div class="guarantee-grid">
                 <div class="guarantee-card">
                     <div class="icon">⚡</div>
-                    <h3>Escape Plan in 24 Hours</h3>
-                    <p>Get personalized romantic escape options fast. Tell us what you want, and we deliver curated stays within a day.</p>
+                    <h3>Your Plan in 24 Hours</h3>
+                    <p>Tell us what you want. We send 3 hand-picked pool stays within a day. Most couples hear back in just a few hours.</p>
                 </div>
                 <div class="guarantee-card">
                     <div class="icon">💎</div>
-                    <h3>Love It Guarantee</h3>
-                    <p>If you do not love the options we send, we refine them until you do. Zero risk. Zero pressure.</p>
+                    <h3>Love It or We Try Again</h3>
+                    <p>If you don't love our picks, we send new ones. We keep going until you say yes. No pressure to book at all.</p>
                 </div>
             </div>
         </div>
@@ -1247,50 +1328,50 @@
     <!-- SOCIAL PROOF -->
     <section class="proof-section">
         <div class="container reveal">
-            <p class="section-label">Real couples. Real weekends.</p>
-            <h2>Loved by couples across Malawi</h2>
+            <p class="section-label">Real Couples. Real Weekends.</p>
+            <h2>Over 500 couples escaped with Trippa</h2>
             <div class="proof-grid">
                 <div class="proof-card">
                     <div class="proof-stars">★★★★★</div>
-                    <blockquote>"She said YES at the villa Trippa found us. The pool setup was absolutely perfect."</blockquote>
+                    <blockquote>"She said YES at the villa Trippa found us. The pool, the setup, the sunset — everything was perfect."</blockquote>
                     <div class="proof-author">
                         <div class="proof-avatar">J</div>
                         <div>
                             <div class="proof-name">James and Thandi</div>
-                            <div class="proof-location">Mangochi</div>
+                            <div class="proof-location">Mangochi · Villa Stay</div>
                         </div>
                     </div>
                 </div>
                 <div class="proof-card">
                     <div class="proof-stars">★★★★★</div>
-                    <blockquote>"Best anniversary surprise ever. The pool setup was unreal. My wife could not stop smiling."</blockquote>
+                    <blockquote>"Best anniversary surprise ever. My wife could not stop smiling. Trippa made it so easy."</blockquote>
                     <div class="proof-author">
                         <div class="proof-avatar">C</div>
                         <div>
                             <div class="proof-name">Chikondi</div>
-                            <div class="proof-location">Lilongwe</div>
+                            <div class="proof-location">Lilongwe · Pool Villa</div>
                         </div>
                     </div>
                 </div>
                 <div class="proof-card">
                     <div class="proof-stars">★★★★★</div>
-                    <blockquote>"Booked on a Tuesday, escaped by Saturday. So easy. Trippa handled everything."</blockquote>
+                    <blockquote>"Booked on a Tuesday. By Saturday we were by the pool. Trippa handled everything."</blockquote>
                     <div class="proof-author">
                         <div class="proof-avatar">B</div>
                         <div>
                             <div class="proof-name">Blessings and Amayi</div>
-                            <div class="proof-location">Blantyre</div>
+                            <div class="proof-location">Blantyre · Lakeside Lodge</div>
                         </div>
                     </div>
                 </div>
                 <div class="proof-card">
                     <div class="proof-stars">★★★★★</div>
-                    <blockquote>"My wife cried when she saw the setup. Worth every kwacha. Trippa is a lifesaver."</blockquote>
+                    <blockquote>"My wife cried when she saw the room. Candle setup, flowers, the whole thing. Worth every kwacha."</blockquote>
                     <div class="proof-author">
                         <div class="proof-avatar">D</div>
                         <div>
                             <div class="proof-name">David</div>
-                            <div class="proof-location">Zomba</div>
+                            <div class="proof-location">Zomba · Romantic Suite</div>
                         </div>
                     </div>
                 </div>
@@ -1301,7 +1382,7 @@
     <!-- FAQ SECTION -->
     <section class="faq-section">
         <div class="container reveal">
-            <p class="section-label">Common questions</p>
+            <p class="section-label">Common Questions</p>
             <h2>Still wondering about something?</h2>
             <div class="faq-list">
                 <div class="faq-item">
@@ -1309,35 +1390,35 @@
                         Is this really free?
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
                     </button>
-                    <div class="faq-answer">Yes. We earn from the stays themselves, so our planning service costs you nothing. You only pay for your actual stay booking.</div>
+                    <div class="faq-answer">Yes. We get paid by the stay providers, not by you. Our planning service costs you nothing. You only pay for the stay itself.</div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" onclick="toggleFaq(this)">
-                        How fast will I get my escape plan?
+                        How fast will I hear back?
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
                     </button>
-                    <div class="faq-answer">Within 24 hours via WhatsApp. Most couples get their personalized plan in just a few hours.</div>
+                    <div class="faq-answer">Within 24 hours on WhatsApp. Most couples get their picks in just a few hours.</div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" onclick="toggleFaq(this)">
-                        What if I do not like the options?
+                        What if I don't like the options?
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
                     </button>
-                    <div class="faq-answer">No problem. We refine and resend until you love what we send. There is zero pressure to book.</div>
+                    <div class="faq-answer">No problem. We send new picks until you love them. There is no pressure to book anything.</div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" onclick="toggleFaq(this)">
-                        Are the stays actually private?
+                        Are the pools really private?
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
                     </button>
-                    <div class="faq-answer">Every stay we recommend has a private pool. No shared pools. No crowds. Just you and your partner.</div>
+                    <div class="faq-answer">Yes. Every place we recommend has a private pool. No sharing with strangers. Just you and your partner.</div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" onclick="toggleFaq(this)">
-                        Can I request romantic setups?
+                        Can you set up candles and flowers?
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
                     </button>
-                    <div class="faq-answer">Absolutely. Candle setups, flower petals, champagne, surprise arrangements. Just tell us what you want and we make it happen.</div>
+                    <div class="faq-answer">Yes. Candles, flower petals, champagne, surprise setups — just tell us what you want and we make it happen.</div>
                 </div>
             </div>
         </div>
@@ -1346,20 +1427,71 @@
     <!-- URGENCY / SCARCITY BAR -->
     <section class="urgency-bar">
         <div class="container reveal">
-            <p>🔥 <strong>Limited availability this weekend.</strong> We only plan a few escapes at a time to keep quality high. Secure your slot now.</p>
+            <p>🔥 <strong>Only 12 escape slots left this month.</strong> Lock yours in before they're gone.</p>
+            <div class="countdown-timer">
+                <div class="countdown-block">
+                    <span class="countdown-num" id="cd-days">00</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-block">
+                    <span class="countdown-num" id="cd-hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-block">
+                    <span class="countdown-num" id="cd-mins">00</span>
+                    <span class="countdown-label">Min</span>
+                </div>
+                <div class="countdown-block">
+                    <span class="countdown-num" id="cd-secs">00</span>
+                    <span class="countdown-label">Sec</span>
+                </div>
+            </div>
+            <p style="font-size:13px; opacity:0.9; margin-top:6px;">Offer expires at midnight — then prices go back up.</p>
+        </div>
+    </section>
+
+    <!-- IDENTITY / "THAT'S FOR ME" SECTION -->
+    <section class="identity-section">
+        <div class="container reveal">
+            <div class="identity-card">
+                <h2>If this sounds like you...</h2>
+                <div class="identity-list">
+                    <div class="identity-item">
+                        <span class="identity-check">✓</span>
+                        <span>You want to surprise your partner with something special</span>
+                    </div>
+                    <div class="identity-item">
+                        <span class="identity-check">✓</span>
+                        <span>You are tired of the same boring hotel weekends</span>
+                    </div>
+                    <div class="identity-item">
+                        <span class="identity-check">✓</span>
+                        <span>You want a private pool, romantic setup, no stress</span>
+                    </div>
+                    <div class="identity-item">
+                        <span class="identity-check">✓</span>
+                        <span>You don't have time to search and compare 50 places</span>
+                    </div>
+                    <div class="identity-item">
+                        <span class="identity-check">✓</span>
+                        <span>You want to look like the best partner ever</span>
+                    </div>
+                </div>
+                <p class="identity-close">Then Trippa was made for you.</p>
+            </div>
         </div>
     </section>
 
     <!-- FINAL CTA -->
     <section class="final-cta">
         <div class="container reveal">
-            <h2>Ready to impress your partner?</h2>
-            <p>Tell us your vibe and let Trippa plan the perfect romantic pool escape.</p>
+            <h2>Your partner deserves this.</h2>
+            <p>Tell us what you want. We find the perfect pool stay. You show up and enjoy.</p>
             <button class="btn-primary" onclick="openModal()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                Start My Escape Now
+                Plan My Escape Now
             </button>
-            <p class="final-trust">Free planning. No commitment. 24hr response.</p>
+            <p class="final-trust">Free planning. No commitment. Response in 24 hours.</p>
         </div>
     </section>
 
@@ -1394,11 +1526,11 @@
                 <button class="modal-close" onclick="closeModal()">✕</button>
             </div>
             <form id="enquiryForm" novalidate>
-                <!-- Section 1: Destination -->
-                <div class="section-label-form"><span class="sec-icon">📍</span> Where to?</div>
+                <!-- Section 1: Where and When -->
+                <div class="section-label-form"><span class="sec-icon">📍</span> Where and When</div>
                 <div class="form-group">
                     <select id="destination" class="form-select" required>
-                        <option value="" disabled selected>Select destination</option>
+                        <option value="" disabled selected>Where do you want to go?</option>
                         <option value="Blantyre">Blantyre</option>
                         <option value="Chikwawa">Chikwawa</option>
                         <option value="Lilongwe">Lilongwe</option>
@@ -1411,26 +1543,24 @@
                         <option value="Thyolo">Thyolo</option>
                         <option value="Zomba">Zomba</option>
                     </select>
-                    <div class="error-msg" id="destinationError">Please select a destination</div>
+                    <div class="error-msg" id="destinationError">Please pick a place</div>
                 </div>
-
-                <div class="divider"></div>
-                <div class="section-label-form"><span class="sec-icon">📅</span> When?</div>
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form-label" for="checkin">Check-in</label>
                         <input type="date" id="checkin" class="form-input" required>
-                        <div class="error-msg" id="checkinError">Select a date</div>
+                        <div class="error-msg" id="checkinError">Pick a date</div>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="checkout">Check-out</label>
                         <input type="date" id="checkout" class="form-input" required>
-                        <div class="error-msg" id="checkoutError">Select a date</div>
+                        <div class="error-msg" id="checkoutError">Pick a date</div>
                     </div>
                 </div>
 
                 <div class="divider"></div>
-                <div class="section-label-form"><span class="sec-icon">👥</span> Who's going?</div>
+                <!-- Section 2: Guests and Budget -->
+                <div class="section-label-form"><span class="sec-icon">👥</span> Guests and Budget</div>
                 <div class="form-group">
                     <label class="form-label">Trip type</label>
                     <div class="chip-group" id="tripTypeGroup">
@@ -1452,152 +1582,47 @@
                             <option value="5">5</option>
                             <option value="6+">6+</option>
                         </select>
-                        <div class="error-msg" id="guestsError">Required</div>
+                        <div class="error-msg" id="guestsError">Pick a number</div>
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="children">Children</label>
-                        <select id="children" class="form-select">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
+                        <label class="form-label" for="budget">Budget per night</label>
+                        <select id="budget" class="form-select" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="MWK 150K">MWK 150K</option>
+                            <option value="MWK 200K">MWK 200K</option>
+                            <option value="MWK 300K">MWK 300K</option>
+                            <option value="MWK 400K">MWK 400K</option>
+                            <option value="MWK 500K">MWK 500K</option>
+                            <option value="MWK 600K">MWK 600K</option>
+                            <option value="MWK 750K">MWK 750K</option>
+                            <option value="MWK 1M">MWK 1M</option>
                         </select>
-                    </div>
-                </div>
-                <div class="form-group" id="childrenAgesGroup" style="display:none;">
-                    <label class="form-label" for="childrenAges">Children's Ages</label>
-                    <input type="text" id="childrenAges" class="form-input" placeholder="e.g. 5, 8, 12">
-                </div>
-
-                <div class="divider"></div>
-                <div class="section-label-form"><span class="sec-icon">🏨</span> Property Type</div>
-                <div class="form-group">
-                    <select id="propertyType" class="form-select">
-                        <option value="" disabled selected>Select property type</option>
-                        <option value="Boutique Villa">Boutique Villa</option>
-                        <option value="Luxury Apartment">Luxury Apartment</option>
-                        <option value="Private Villa">Private Villa</option>
-                        <option value="Pool Villa">Pool Villa</option>
-                        <option value="Executive Guesthouse">Executive Guesthouse</option>
-                        <option value="Boutique Guesthouse">Boutique Guesthouse</option>
-                        <option value="Beach Resort">Beach Resort</option>
-                        <option value="Lakeside Lodge">Lakeside Lodge</option>
-                        <option value="Nature Retreat">Nature Retreat</option>
-                        <option value="Mountain Lodge">Mountain Lodge</option>
-                        <option value="Tea Estate Retreat">Tea Estate Retreat</option>
-                        <option value="Private Chalet">Private Chalet</option>
-                        <option value="Luxury Cabin">Luxury Cabin</option>
-                        <option value="Eco Retreat">Eco Retreat</option>
-                        <option value="Penthouse Apartment">Penthouse Apartment</option>
-                        <option value="Hidden Luxury Home">Hidden Luxury Home</option>
-                    </select>
-                </div>
-
-                <div class="divider"></div>
-                <div class="section-label-form"><span class="sec-icon">🛏️</span> Room Type</div>
-                <div class="form-group">
-                    <select id="roomType" class="form-select">
-                        <option value="" disabled selected>Select room type</option>
-                        <option value="Honeymoon Suite">Honeymoon Suite</option>
-                        <option value="Executive Suite">Executive Suite</option>
-                        <option value="Deluxe King Room">Deluxe King Room</option>
-                        <option value="Pool View Room">Pool View Room</option>
-                        <option value="Lake View Room">Lake View Room</option>
-                        <option value="Private Chalet">Private Chalet</option>
-                        <option value="Luxury Apartment Suite">Luxury Apartment Suite</option>
-                        <option value="Penthouse Suite">Penthouse Suite</option>
-                        <option value="Couple's Retreat Room">Couple's Retreat Room</option>
-                        <option value="Family Villa">Family Villa</option>
-                        <option value="Entire Private Home">Entire Private Home</option>
-                    </select>
-                </div>
-
-                <div class="divider"></div>
-                <div class="section-label-form"><span class="sec-icon">🎯</span> Preferred Vibe</div>
-                <div class="form-group">
-                    <div class="chip-group" id="vibeGroup">
-                        <button type="button" class="chip" data-value="Romantic" onclick="toggleSingleChip(this, 'vibeGroup')">Romantic</button>
-                        <button type="button" class="chip" data-value="Luxury" onclick="toggleSingleChip(this, 'vibeGroup')">Luxury</button>
-                        <button type="button" class="chip" data-value="Relaxing" onclick="toggleSingleChip(this, 'vibeGroup')">Relaxing</button>
-                        <button type="button" class="chip" data-value="Adventure" onclick="toggleSingleChip(this, 'vibeGroup')">Adventure</button>
-                        <button type="button" class="chip" data-value="Nature Escape" onclick="toggleSingleChip(this, 'vibeGroup')">Nature Escape</button>
-                        <button type="button" class="chip" data-value="Surprise Getaway" onclick="toggleSingleChip(this, 'vibeGroup')">Surprise Getaway</button>
-                        <button type="button" class="chip" data-value="Aesthetic Weekend" onclick="toggleSingleChip(this, 'vibeGroup')">Aesthetic Weekend</button>
-                        <button type="button" class="chip" data-value="Private Escape" onclick="toggleSingleChip(this, 'vibeGroup')">Private Escape</button>
+                        <div class="error-msg" id="budgetError">Pick a budget</div>
                     </div>
                 </div>
 
                 <div class="divider"></div>
-                <div class="section-label-form"><span class="sec-icon">💰</span> Budget Range</div>
+                <!-- Section 3: What You Want -->
+                <div class="section-label-form"><span class="sec-icon">💬</span> Tell Us What You Want</div>
                 <div class="form-group">
-                    <select id="budget" class="form-select" required>
-                        <option value="" disabled selected>Select budget (MWK per night)</option>
-                        <option value="MWK 150K">MWK 150K per night</option>
-                        <option value="MWK 200K">MWK 200K per night</option>
-                        <option value="MWK 300K">MWK 300K per night</option>
-                        <option value="MWK 400K">MWK 400K per night</option>
-                        <option value="MWK 500K">MWK 500K per night</option>
-                        <option value="MWK 600K">MWK 600K per night</option>
-                        <option value="MWK 750K">MWK 750K per night</option>
-                        <option value="MWK 1M">MWK 1M per night</option>
-                    </select>
-                    <div class="error-msg" id="budgetError">Required</div>
+                    <textarea id="perfectEscape" class="textarea-premium" rows="3" placeholder="What kind of weekend are you looking for? Romantic, relaxing, surprise, lakeside, poolside... anything goes."></textarea>
                 </div>
 
                 <div class="divider"></div>
-                <div class="section-label-form"><span class="sec-icon">✨</span> Pool & Amenities</div>
-                <div class="form-group">
-                    <div class="chip-group" id="amenitiesGroup">
-                        <button type="button" class="chip" data-value="Private Pool" onclick="toggleChip(this)">Private Pool</button>
-                        <button type="button" class="chip" data-value="Shared Pool" onclick="toggleChip(this)">Shared Pool</button>
-                        <button type="button" class="chip" data-value="Romantic Setup" onclick="toggleChip(this)">Romantic Setup</button>
-                        <button type="button" class="chip" data-value="Lake View" onclick="toggleChip(this)">Lake View</button>
-                        <button type="button" class="chip" data-value="Mountain View" onclick="toggleChip(this)">Mountain View</button>
-                        <button type="button" class="chip" data-value="Balcony" onclick="toggleChip(this)">Balcony</button>
-                        <button type="button" class="chip" data-value="Bathtub" onclick="toggleChip(this)">Bathtub</button>
-                        <button type="button" class="chip" data-value="Breakfast Included" onclick="toggleChip(this)">Breakfast Included</button>
-                        <button type="button" class="chip" data-value="Couple Friendly" onclick="toggleChip(this)">Couple Friendly</button>
-                        <button type="button" class="chip" data-value="Nature Escape" onclick="toggleChip(this)">Nature Escape</button>
-                        <button type="button" class="chip" data-value="City Escape" onclick="toggleChip(this)">City Escape</button>
-                        <button type="button" class="chip" data-value="Luxury Experience" onclick="toggleChip(this)">Luxury Experience</button>
-                        <button type="button" class="chip" data-value="Budget Friendly" onclick="toggleChip(this)">Budget Friendly</button>
-                        <button type="button" class="chip" data-value="Weekend Getaway" onclick="toggleChip(this)">Weekend Getaway</button>
-                    </div>
-                </div>
-
-                <div class="divider"></div>
-                <div class="section-label-form"><span class="sec-icon">🌹</span> Romantic Setup</div>
-                <div class="form-group">
-                    <select id="romanticSetup" class="form-select">
-                        <option value="" disabled selected>Select romantic setup</option>
-                        <option value="None">None</option>
-                        <option value="Candle & Rose Petals">Candle & Rose Petals</option>
-                        <option value="Champagne & Strawberries">Champagne & Strawberries</option>
-                        <option value="Flower Crown Setup">Flower Crown Setup</option>
-                        <option value="Surprise Decoration">Surprise Decoration</option>
-                        <option value="Custom Setup">Custom Setup</option>
-                    </select>
-                </div>
-
-                <div class="divider"></div>
-                <div class="section-label-form"><span class="sec-icon">💬</span> Describe Your Perfect Escape</div>
-                <div class="form-group">
-                    <textarea id="perfectEscape" class="textarea-premium" placeholder="Tell us the kind of experience you want — romantic, peaceful, luxury, surprise weekend, lakeside, poolside, nature escape, etc."></textarea>
-                </div>
-
-                <div class="divider"></div>
+                <!-- Section 4: Your Details -->
                 <div class="section-label-form"><span class="sec-icon">👤</span> Your Details</div>
                 <div class="form-group">
                     <label class="form-label">Full Name</label>
-                    <input type="text" id="name" class="form-input" placeholder="Your full name" required>
-                    <div class="error-msg" id="nameError">Required</div>
+                    <input type="text" id="name" class="form-input" placeholder="Your name" required>
+                    <div class="error-msg" id="nameError">We need your name</div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Phone Number</label>
                     <input type="tel" id="phone" class="form-input" placeholder="+265..." required>
-                    <div class="error-msg" id="phoneError">Required</div>
+                    <div class="error-msg" id="phoneError">We need your number</div>
                 </div>
+
+                <p class="form-note">That's it! We'll send you 3 hand-picked pool stays on WhatsApp within 24 hours.</p>
 
                 <button type="button" class="btn-submit" onclick="submitForm()">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -1780,6 +1805,34 @@
         document.querySelectorAll('.reveal').forEach(function(el) {
             observer.observe(el);
         });
+
+        // Countdown Timer - expires at end of current month
+        (function() {
+            var now = new Date();
+            var endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
+
+            function updateCountdown() {
+                var diff = endOfMonth - new Date();
+                if (diff <= 0) {
+                    document.getElementById('cd-days').textContent = '00';
+                    document.getElementById('cd-hours').textContent = '00';
+                    document.getElementById('cd-mins').textContent = '00';
+                    document.getElementById('cd-secs').textContent = '00';
+                    return;
+                }
+                var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                var secs = Math.floor((diff % (1000 * 60)) / 1000);
+                document.getElementById('cd-days').textContent = days < 10 ? '0' + days : days;
+                document.getElementById('cd-hours').textContent = hours < 10 ? '0' + hours : hours;
+                document.getElementById('cd-mins').textContent = mins < 10 ? '0' + mins : mins;
+                document.getElementById('cd-secs').textContent = secs < 10 ? '0' + secs : secs;
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        })();
     </script>
 </body>
 </html>

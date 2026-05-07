@@ -3,282 +3,761 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trippa — Malawi's Finest Pool Stays</title>
+    <title>Trippa — Romantic Pool Escapes in Malawi</title>
+    <meta name="description" content="Plan the perfect romantic private pool escape in Malawi within 24 hours. Curated stays for couples.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
         :root {
-            --orange-50: #FFF7ED;
-            --orange-100: #FFEDD5;
-            --orange-200: #FED7AA;
-            --orange-300: #FDBA74;
-            --orange-400: #FB923C;
-            --orange-500: #F97316;
-            --orange-600: #EA580C;
+            --bg: #FAF7F2;
+            --dark: #1A1A1A;
+            --gold: #C9956B;
+            --gold-light: #D4A574;
+            --warm: #F5EFE6;
             --white: #FFFFFF;
-            --gray-50: #FAFAF9;
-            --gray-200: #E7E5E4;
-            --gray-400: #A8A29E;
-            --gray-600: #57534E;
-            --gray-900: #1C1917;
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
-            --radius: 14px;
-            --radius-lg: 20px;
+            --text: #3D3D3D;
+            --text-light: #6B6B6B;
+            --radius: 16px;
+            --radius-lg: 24px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--white);
-            color: var(--gray-900);
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-            padding-bottom: 100px;
             overflow-x: hidden;
         }
 
-        /* Faded orange background pattern */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background:
-                radial-gradient(ellipse at 20% 20%, rgba(253, 186, 116, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 50%, rgba(249, 115, 22, 0.06) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 80%, rgba(254, 215, 170, 0.06) 0%, transparent 50%);
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--dark);
+            line-height: 1.2;
         }
 
-        .container {
-            max-width: 520px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* Header with wave */
-        .header {
-            background: linear-gradient(135deg, var(--orange-500) 0%, var(--orange-600) 100%);
-            padding: 40px 20px 0;
-            text-align: center;
+        /* HERO */
+        .hero {
             position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
             overflow: hidden;
         }
 
-        .header::before {
-            content: '';
+        .hero-bg {
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 50%);
-            animation: shimmer 8s ease-in-out infinite alternate;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
         }
 
-        @keyframes shimmer {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(10%, 5%); }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(26,26,26,0.3) 0%, rgba(26,26,26,0.6) 100%);
         }
 
-        .logo {
-            width: 110px;
-            height: 110px;
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 40px 20px;
+            max-width: 680px;
+        }
+
+        .hero-logo {
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             object-fit: cover;
+            border: 3px solid rgba(255,255,255,0.4);
+            margin: 0 auto 20px;
             display: block;
-            margin: 0 auto 12px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            position: relative;
-            z-index: 1;
         }
 
-        .header h1 {
-            font-size: 24px;
-            font-weight: 700;
+        .hero h1 {
+            font-size: clamp(28px, 6vw, 52px);
             color: var(--white);
-            margin-bottom: 6px;
+            margin-bottom: 16px;
             letter-spacing: -0.5px;
-            position: relative;
-            z-index: 1;
         }
 
-        .header p {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.85);
-            max-width: 300px;
+        .hero h1 em {
+            font-style: italic;
+            color: var(--gold-light);
+        }
+
+        .hero-sub {
+            font-size: clamp(14px, 2.5vw, 17px);
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background: var(--gold-light);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(201, 149, 107, 0.4);
+            text-decoration: none;
+        }
+
+        .btn-primary:active { transform: scale(0.97); }
+
+        .hero-trust {
+            margin-top: 20px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--white);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 28px;
+            height: 28px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* VALUE PROPOSITION */
+        .value-section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .section-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .value-section h2 {
+            font-size: clamp(24px, 4vw, 36px);
+            max-width: 600px;
+            margin: 0 auto 12px;
+        }
+
+        .value-section .subtitle {
+            font-size: 15px;
+            color: var(--text-light);
+            max-width: 480px;
+            margin: 0 auto 48px;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            max-width: 900px;
             margin: 0 auto;
-            line-height: 1.5;
-            position: relative;
-            z-index: 1;
         }
 
-        /* Wave decoration */
-        .wave-container {
+        .value-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 24px 16px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(201,149,107,0.15);
+        }
+
+        .value-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+        }
+
+        .value-card .icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .value-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .value-card p {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* HOW IT WORKS */
+        .how-section {
+            padding: 80px 20px;
+            background: var(--warm);
+            text-align: center;
+        }
+
+        .how-section h2 {
+            font-size: clamp(24px, 4vw, 36px);
+            margin-bottom: 48px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
             position: relative;
-            margin-top: -2px;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--gold);
+            opacity: 0.4;
+            margin-bottom: 8px;
+        }
+
+        .step h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .step-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+
+        /* OFFER SECTION */
+        .offer-section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .offer-section h2 {
+            font-size: clamp(24px, 4vw, 36px);
+            margin-bottom: 40px;
+        }
+
+        .offer-card {
+            background: var(--dark);
+            border-radius: var(--radius-lg);
+            padding: 40px 24px;
+            max-width: 560px;
+            margin: 0 auto;
+            text-align: left;
+            position: relative;
             overflow: hidden;
         }
 
-        .wave-container svg {
-            display: block;
-            width: 100%;
-            height: 60px;
+        .offer-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
         }
 
-        /* Floating icons row */
-        .floating-icons {
+        .offer-card h3 {
+            color: var(--gold-light);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .offer-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .offer-item:last-child { border-bottom: none; }
+
+        .offer-check {
+            width: 24px;
+            height: 24px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .offer-check svg { width: 14px; height: 14px; color: var(--dark); }
+
+        .offer-item-text h4 {
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .offer-item-text p {
+            color: rgba(255,255,255,0.5);
+            font-size: 13px;
+        }
+
+        .offer-cta {
+            text-align: center;
+            margin-top: 32px;
+        }
+
+        .offer-cta .btn-primary {
+            width: 100%;
+            justify-content: center;
+            padding: 18px 32px;
+            font-size: 17px;
+        }
+
+        /* EMOTIONAL SECTION */
+        .emotional-section {
+            position: relative;
+            padding: 120px 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .emotional-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+        }
+
+        .emotional-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(26,26,26,0.55);
+        }
+
+        .emotional-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .emotional-content h2 {
+            font-size: clamp(28px, 5vw, 48px);
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .emotional-content p {
+            font-size: clamp(16px, 3vw, 20px);
+            color: var(--gold-light);
+            font-style: italic;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* SPEED + RISK */
+        .guarantee-section {
+            padding: 80px 20px;
+            background: var(--warm);
+        }
+
+        .guarantee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .guarantee-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px 24px;
+            border: 1px solid rgba(201,149,107,0.2);
+            transition: transform 0.3s;
+        }
+
+        .guarantee-card:hover { transform: translateY(-3px); }
+
+        .guarantee-card .icon { font-size: 36px; margin-bottom: 16px; }
+
+        .guarantee-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .guarantee-card p {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* SOCIAL PROOF */
+        .proof-section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .proof-section h2 {
+            font-size: clamp(24px, 4vw, 36px);
+            margin-bottom: 40px;
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .proof-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 24px;
+            text-align: left;
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .proof-stars {
+            color: #F59E0B;
+            font-size: 16px;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+
+        .proof-card blockquote {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text);
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+
+        .proof-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .proof-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--gold-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .proof-name {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .proof-location {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        /* FINAL CTA */
+        .final-cta {
+            padding: 100px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--dark) 0%, #2D2D2D 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(201,149,107,0.15) 0%, transparent 70%);
+        }
+
+        .final-cta h2 {
+            color: var(--white);
+            font-size: clamp(28px, 5vw, 44px);
+            margin-bottom: 12px;
+        }
+
+        .final-cta p {
+            color: rgba(255,255,255,0.6);
+            font-size: 16px;
+            margin-bottom: 32px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .final-cta .btn-primary {
+            font-size: 18px;
+            padding: 18px 40px;
+        }
+
+        .final-trust {
+            margin-top: 16px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 40px 20px;
+            text-align: center;
+            background: var(--dark);
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .footer-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 16px;
+            opacity: 0.8;
+        }
+
+        .footer p {
+            color: rgba(255,255,255,0.4);
+            font-size: 13px;
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
             display: flex;
             justify-content: center;
             gap: 24px;
-            padding: 20px 0 8px;
             flex-wrap: wrap;
         }
 
-        .icon-bubble {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            opacity: 0.7;
+        .footer-links a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s;
         }
 
-        .icon-bubble .emoji {
-            font-size: 24px;
-            animation: float 3s ease-in-out infinite;
-        }
+        .footer-links a:hover { color: var(--gold-light); }
 
-        .icon-bubble .label {
-            font-size: 10px;
-            font-weight: 500;
-            color: var(--gray-400);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .icon-bubble:nth-child(2) .emoji { animation-delay: 0.5s; }
-        .icon-bubble:nth-child(3) .emoji { animation-delay: 1s; }
-        .icon-bubble:nth-child(4) .emoji { animation-delay: 1.5s; }
-        .icon-bubble:nth-child(5) .emoji { animation-delay: 2s; }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-        }
-
-        /* Trust badges */
-        .trust-bar {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 8px 0 24px;
-            flex-wrap: wrap;
-        }
-
-        .trust-badge {
-            display: flex;
-            align-items: center;
-            gap: 5px;
+        .footer-bottom {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.06);
             font-size: 12px;
-            font-weight: 500;
-            color: var(--gray-600);
-            background: var(--orange-50);
-            padding: 6px 12px;
-            border-radius: 20px;
+            color: rgba(255,255,255,0.3);
         }
 
-        /* Form wrapper */
-        .form-wrapper {
-            position: relative;
-            z-index: 1;
-            padding: 0 0 24px;
+        /* STICKY MOBILE CTA */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26,26,26,0.95);
+            backdrop-filter: blur(12px);
+            padding: 12px 20px;
+            padding-bottom: max(12px, env(safe-area-inset-bottom));
+            z-index: 90;
+            display: none;
         }
 
-        .form-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--orange-100);
-        }
-
-        .section-title {
+        .sticky-cta .btn-primary {
+            width: 100%;
+            justify-content: center;
+            padding: 14px 24px;
             font-size: 15px;
-            font-weight: 600;
-            color: var(--gray-900);
-            margin-bottom: 12px;
+            border-radius: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .sticky-cta { display: block; }
+            body { padding-bottom: 70px; }
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            z-index: 200;
+            display: none;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .modal-overlay.active { display: flex; }
+
+        .modal {
+            background: var(--bg);
+            width: 100%;
+            max-width: 520px;
+            max-height: 92vh;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            overflow-y: auto;
+            padding: 24px;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .modal-header {
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: space-between;
+            margin-bottom: 24px;
         }
 
-        .section-title .icon {
-            font-size: 16px;
+        .modal-header h3 {
+            font-size: 20px;
         }
 
-        .form-group {
-            margin-bottom: 14px;
+        .modal-close {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: var(--warm);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            color: var(--text-light);
         }
 
-        .form-group:last-child {
-            margin-bottom: 0;
-        }
+        .form-group { margin-bottom: 14px; }
+        .form-group:last-child { margin-bottom: 0; }
 
         .form-label {
             display: block;
             font-size: 13px;
             font-weight: 500;
-            color: var(--gray-600);
+            color: var(--text-light);
             margin-bottom: 6px;
         }
 
-        .form-input,
-        .form-select,
-        .form-textarea {
+        .form-input, .form-select, .form-textarea {
             width: 100%;
-            padding: 14px 16px;
+            padding: 13px 14px;
             font-size: 16px;
-            font-family: inherit;
-            color: var(--gray-900);
-            background: var(--gray-50);
-            border: 1.5px solid var(--gray-200);
-            border-radius: var(--radius);
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background: var(--white);
+            border: 1.5px solid #E5E0DA;
+            border-radius: 12px;
             outline: none;
-            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+            transition: border-color 0.2s, box-shadow 0.2s;
             -webkit-appearance: none;
         }
 
-        .form-input:focus,
-        .form-select:focus,
-        .form-textarea:focus {
-            border-color: var(--orange-400);
-            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.12);
-            background: var(--white);
-        }
-
-        .form-input::placeholder,
-        .form-textarea::placeholder {
-            color: var(--gray-400);
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(201,149,107,0.15);
         }
 
         .form-select {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2378716C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236B6B6B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            background-position: right 14px center;
-            padding-right: 40px;
+            background-position: right 12px center;
+            padding-right: 36px;
         }
 
-        .form-textarea {
-            min-height: 90px;
-            resize: vertical;
-        }
+        .form-textarea { min-height: 80px; resize: vertical; }
 
         .form-row {
             display: grid;
@@ -286,519 +765,633 @@
             gap: 12px;
         }
 
-        .optional-badge {
-            font-size: 11px;
-            font-weight: 500;
-            color: var(--gray-400);
-            background: var(--gray-50);
-            padding: 2px 8px;
-            border-radius: 20px;
-            margin-left: 6px;
-        }
-
-        .divider {
-            height: 1px;
-            background: var(--orange-100);
-            margin: 18px 0;
-        }
-
-        .form-input.error,
-        .form-select.error {
+        .form-input.error, .form-select.error {
             border-color: #EF4444;
             background: #FEF2F2;
         }
 
-        .error-message {
+        .error-msg {
             font-size: 12px;
             color: #EF4444;
-            margin-top: 6px;
+            margin-top: 4px;
             display: none;
         }
+        .error-msg.visible { display: block; }
 
-        .error-message.visible {
-            display: block;
+        .divider {
+            height: 1px;
+            background: #E5E0DA;
+            margin: 18px 0;
         }
 
-        /* Sticky CTA */
-        .sticky-cta {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(12px);
-            padding: 16px 20px;
-            padding-bottom: max(16px, env(safe-area-inset-bottom));
-            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
-            z-index: 100;
+        .section-label-form {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .sticky-cta .container {
-            padding: 0;
-        }
-
-        .btn-whatsapp {
+        .btn-submit {
             width: 100%;
-            padding: 16px 24px;
+            padding: 16px;
             font-size: 16px;
             font-weight: 600;
-            font-family: inherit;
+            font-family: 'Inter', sans-serif;
             color: var(--white);
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            background: #25D366;
             border: none;
-            border-radius: var(--radius);
+            border-radius: 14px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            transition: transform 0.15s, box-shadow 0.15s;
-            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+            gap: 8px;
+            margin-top: 20px;
+            box-shadow: 0 4px 14px rgba(37,211,102,0.35);
         }
 
-        .btn-whatsapp:active {
-            transform: scale(0.98);
-        }
+        .btn-submit:active { transform: scale(0.98); }
+        .btn-submit svg { width: 20px; height: 20px; }
 
-        .btn-whatsapp svg {
-            width: 22px;
-            height: 22px;
-            flex-shrink: 0;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 24px 20px 0;
-            font-size: 13px;
-            color: var(--gray-400);
-        }
-
-        /* Faded orange wave decorations on page */
-        .deco-wave {
-            position: relative;
-            height: 80px;
-            margin: 24px 0;
-            opacity: 0.4;
-        }
-
-        .deco-wave svg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
-        @media (min-width: 640px) {
-            .header {
-                padding: 56px 20px 0;
+        @media (min-width: 768px) {
+            .modal {
+                border-radius: var(--radius-lg);
+                margin: auto;
+                max-height: 85vh;
             }
-
-            .header h1 {
-                font-size: 32px;
-            }
-
-            .header p {
-                font-size: 16px;
-            }
-
-            .form-card {
-                padding: 32px;
-            }
-
-            .form-row {
-                gap: 16px;
-            }
+            .modal-overlay { align-items: center; }
         }
     </style>
 </head>
 <body>
 
-    <header class="header">
-        <div class="container">
-            <img src="https://i.postimg.cc/pLRpK4Bd/trippa-logo.png" alt="Trippa" class="logo" />
-            <h1>Malawi's Finest Pool Stays</h1>
-            <p>Handpicked escapes with pools. Private, beautiful, unforgettable.</p>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <img src="https://i.postimg.cc/pLRpK4Bd/trippa-logo.png" alt="Trippa" class="hero-logo">
+            <h1>Plan the perfect romantic <em>pool escape</em> in 24 hours.</h1>
+            <p class="hero-sub">Private pool stays curated for unforgettable weekends — without the stress of searching, comparing, or planning everything yourself.</p>
+            <button class="btn-primary" onclick="openModal()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Plan My Escape
+            </button>
+            <p class="hero-trust">Curated romantic escapes for couples in Malawi.</p>
+            <div class="hero-badges">
+                <span class="hero-badge">⚡ 24hr planning</span>
+                <span class="hero-badge">💎 Curated stays</span>
+                <span class="hero-badge">⭐ 4.9/5</span>
+            </div>
         </div>
-    </header>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+    </section>
 
-    <div class="wave-container">
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 0H1440V30C1440 30 1200 60 720 45C240 30 0 45 0 45V0Z" fill="#F97316" opacity="0.15"/>
-            <path d="M0 15H1440V40C1440 40 1080 60 720 50C360 40 0 50 0 50V15Z" fill="#F97316" opacity="0.1"/>
-            <path d="M0 25H1440V45C1440 45 960 60 720 55C480 50 0 55 0 55V25Z" fill="#F97316" opacity="0.06"/>
-        </svg>
+    <!-- VALUE PROPOSITION -->
+    <section class="value-section">
+        <div class="container reveal">
+            <p class="section-label">Why Trippa</p>
+            <h2>We don't just book stays — we create <em>unforgettable</em> moments.</h2>
+            <p class="subtitle">Romance, privacy, and curated luxury — without the stress of planning it yourself.</p>
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="icon">🏊</div>
+                    <h3>Private Pools</h3>
+                    <p>Exclusive pool-only stays, never crowded</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">🌹</div>
+                    <h3>Romantic Setups</h3>
+                    <p>Candles, flowers, champagne on request</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">✨</div>
+                    <h3>Personalized Escapes</h3>
+                    <p>Tailored to your vibe and budget</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">⚡</div>
+                    <h3>Fast Planning</h3>
+                    <p>Your escape curated within 24 hours</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">🔒</div>
+                    <h3>Verified Stays</h3>
+                    <p>Every stay personally vetted by Trippa</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-section">
+        <div class="container reveal">
+            <p class="section-label">How it works</p>
+            <h2>Your escape in 3 simple steps</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">💬</div>
+                    <div class="step-number">01</div>
+                    <h3>Tell us your vibe</h3>
+                    <p>Budget, dates, city, style — just a few details</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">🎯</div>
+                    <div class="step-number">02</div>
+                    <h3>We curate your escape</h3>
+                    <p>Handpicked romantic pool stays just for you</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">🥂</div>
+                    <div class="step-number">03</div>
+                    <h3>You enjoy the moment</h3>
+                    <p>We handle the planning. You make the memories.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OFFER SECTION -->
+    <section class="offer-section">
+        <div class="container reveal">
+            <p class="section-label">What's included</p>
+            <h2>Everything you need for the perfect romantic weekend.</h2>
+            <div class="offer-card">
+                <h3>Your Escape Package</h3>
+                <div class="offer-item">
+                    <div class="offer-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="offer-item-text">
+                        <h4>Private romantic pool stay</h4>
+                        <p>Handpicked for couples</p>
+                    </div>
+                </div>
+                <div class="offer-item">
+                    <div class="offer-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="offer-item-text">
+                        <h4>Personalized recommendations</h4>
+                        <p>Based on your preferences</p>
+                    </div>
+                </div>
+                <div class="offer-item">
+                    <div class="offer-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="offer-item-text">
+                        <h4>Fast WhatsApp planning</h4>
+                        <p>Your plan within 24 hours</p>
+                    </div>
+                </div>
+                <div class="offer-item">
+                    <div class="offer-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="offer-item-text">
+                        <h4>Romantic setup options</h4>
+                        <p>Candles, flowers, champagne</p>
+                    </div>
+                </div>
+                <div class="offer-item">
+                    <div class="offer-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="offer-item-text">
+                        <h4>Curated local experiences</h4>
+                        <p>Dining, activities, surprises</p>
+                    </div>
+                </div>
+                <div class="offer-item">
+                    <div class="offer-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="offer-item-text">
+                        <h4>Backup options guaranteed</h4>
+                        <p>Always have a plan B</p>
+                    </div>
+                </div>
+                <div class="offer-item">
+                    <div class="offer-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="offer-item-text">
+                        <h4>Dedicated concierge support</h4>
+                        <p>We're with you the whole way</p>
+                    </div>
+                </div>
+                <div class="offer-cta">
+                    <button class="btn-primary" onclick="openModal()">Get My Free Escape Plan</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EMOTIONAL SECTION -->
+    <section class="emotional-section">
+        <div class="emotional-bg"></div>
+        <div class="emotional-overlay"></div>
+        <div class="emotional-content reveal">
+            <h2>This isn't just accommodation.</h2>
+            <p>"It's the weekend your partner will never forget."</p>
+        </div>
+    </section>
+
+    <!-- SPEED + RISK REVERSAL -->
+    <section class="guarantee-section">
+        <div class="container reveal">
+            <div class="guarantee-grid">
+                <div class="guarantee-card">
+                    <div class="icon">⚡</div>
+                    <h3>Escape Plan in 24 Hours</h3>
+                    <p>Get personalized romantic escape options fast. Tell us what you want, and we'll deliver curated stays within a day.</p>
+                </div>
+                <div class="guarantee-card">
+                    <div class="icon">💎</div>
+                    <h3>No Pressure Guarantee</h3>
+                    <p>If you don't love the options we send, we refine them until you do. No pressure, no hassle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF -->
+    <section class="proof-section">
+        <div class="container reveal">
+            <p class="section-label">Testimonials</p>
+            <h2>Loved by couples across Malawi</h2>
+            <div class="proof-grid">
+                <div class="proof-card">
+                    <div class="proof-stars">★★★★★</div>
+                    <blockquote>"She said YES at the villa Trippa found us 💍 The pool setup was absolutely perfect."</blockquote>
+                    <div class="proof-author">
+                        <div class="proof-avatar">J</div>
+                        <div>
+                            <div class="proof-name">James & Thandi</div>
+                            <div class="proof-location">Mangochi</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="proof-card">
+                    <div class="proof-stars">★★★★★</div>
+                    <blockquote>"Best anniversary surprise ever! The pool setup was unreal 🌹 My wife couldn't stop smiling."</blockquote>
+                    <div class="proof-author">
+                        <div class="proof-avatar">C</div>
+                        <div>
+                            <div class="proof-name">Chikondi</div>
+                            <div class="proof-location">Lilongwe</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="proof-card">
+                    <div class="proof-stars">★★★★★</div>
+                    <blockquote>"Booked on a Tuesday, escaped by Saturday. So easy. Trippa handled everything."</blockquote>
+                    <div class="proof-author">
+                        <div class="proof-avatar">B</div>
+                        <div>
+                            <div class="proof-name">Blessings & Amayi</div>
+                            <div class="proof-location">Blantyre</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="proof-card">
+                    <div class="proof-stars">★★★★★</div>
+                    <blockquote>"My wife cried when she saw the setup. Worth every kwacha. Trippa is a lifesaver."</blockquote>
+                    <div class="proof-author">
+                        <div class="proof-avatar">D</div>
+                        <div>
+                            <div class="proof-name">David</div>
+                            <div class="proof-location">Zomba</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+        <div class="container reveal">
+            <h2>Ready to impress your partner?</h2>
+            <p>Tell us your vibe and let Trippa plan the perfect romantic pool escape.</p>
+            <button class="btn-primary" onclick="openModal()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Start My Escape Now
+            </button>
+            <p class="final-trust">Free planning. No commitment. 24hr response.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <img src="https://i.postimg.cc/pLRpK4Bd/trippa-logo.png" alt="Trippa" class="footer-logo">
+            <p>Curated romantic escapes in Malawi</p>
+            <div class="footer-links">
+                <a href="https://wa.me/265983311818" target="_blank">WhatsApp</a>
+                <a href="#">Instagram</a>
+                <a href="#">TikTok</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <div class="footer-bottom">© Trippa 2026. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- STICKY MOBILE CTA -->
+    <div class="sticky-cta">
+        <button class="btn-primary" onclick="openModal()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Plan My Escape
+        </button>
     </div>
 
-    <main class="form-wrapper">
-        <div class="container">
-
-            <!-- Floating experience icons -->
-            <div class="floating-icons">
-                <div class="icon-bubble">
-                    <span class="emoji">🏊</span>
-                    <span class="label">Pool</span>
-                </div>
-                <div class="icon-bubble">
-                    <span class="emoji">🍹</span>
-                    <span class="label">Drinks</span>
-                </div>
-                <div class="icon-bubble">
-                    <span class="emoji">🍖</span>
-                    <span class="label">Grill</span>
-                </div>
-                <div class="icon-bubble">
-                    <span class="emoji">🌅</span>
-                    <span class="label">Views</span>
-                </div>
-                <div class="icon-bubble">
-                    <span class="emoji">🛋️</span>
-                    <span class="label">Lounge</span>
-                </div>
+    <!-- MODAL FORM -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Plan My Escape</h3>
+                <button class="modal-close" onclick="closeModal()">✕</button>
             </div>
-
-            <!-- Trust bar -->
-            <div class="trust-bar">
-                <span class="trust-badge">⚡ 5-min response</span>
-                <span class="trust-badge">💎 Curated stays</span>
-                <span class="trust-badge">⭐ 4.9/5 rating</span>
-            </div>
-
             <form id="enquiryForm" novalidate>
-                <div class="form-card">
-
-                    <!-- Destination -->
-                    <div class="section-title">
-                        <span class="icon">📍</span>
-                        Destination
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="destination">Where do you want to go?</label>
-                        <select id="destination" class="form-select" required>
-                            <option value="" disabled selected>Select destination</option>
-                            <option value="Blantyre">Blantyre</option>
-                            <option value="Chikwawa">Chikwawa</option>
-                            <option value="Lilongwe">Lilongwe</option>
-                            <option value="Mangochi">Mangochi</option>
-                            <option value="Mulanje">Mulanje</option>
-                            <option value="Mzuzu">Mzuzu</option>
-                            <option value="Nkhata Bay">Nkhata Bay</option>
-                            <option value="Nkhotakota">Nkhotakota</option>
-                            <option value="Salima">Salima</option>
-                            <option value="Thyolo">Thyolo</option>
-                            <option value="Zomba">Zomba</option>
-                        </select>
-                        <div class="error-message" id="destinationError">Please select a destination</div>
-                    </div>
-
-                    <div class="divider"></div>
-
-                    <!-- Travel Dates -->
-                    <div class="section-title">
-                        <span class="icon">📅</span>
-                        Travel Dates
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label" for="checkin">Check-in</label>
-                            <input type="date" id="checkin" class="form-input" required>
-                            <div class="error-message" id="checkinError">Select a check-in date</div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="checkout">Check-out</label>
-                            <input type="date" id="checkout" class="form-input" required>
-                            <div class="error-message" id="checkoutError">Select a check-out date</div>
-                        </div>
-                    </div>
-
-                    <div class="divider"></div>
-
-                    <!-- Guest Details -->
-                    <div class="section-title">
-                        <span class="icon">👥</span>
-                        Guest Details
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label" for="adults">Adults</label>
-                            <select id="adults" class="form-select" required>
-                                <option value="" disabled selected>Select</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6+</option>
-                            </select>
-                            <div class="error-message" id="adultsError">Select number of adults</div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="children">Children <span class="optional-badge">Optional</span></label>
-                            <select id="children" class="form-select" required>
-                                <option value="" disabled selected>Select</option>
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
-                            <div class="error-message" id="childrenError">Select number of children</div>
-                        </div>
-                    </div>
-                    <div class="form-group" id="childrenAgesGroup" style="display: none;">
-                        <label class="form-label" for="childrenAges">Children's Ages</label>
-                        <input type="text" id="childrenAges" class="form-input" placeholder="e.g. 5, 8, 12">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="nationality">Nationality</label>
-                        <select id="nationality" class="form-select" required>
-                            <option value="" disabled selected>Select nationality</option>
-                            <option value="Malawian">Malawian</option>
-                            <option value="South African">South African</option>
-                            <option value="British">British</option>
-                            <option value="Mozambican">Mozambican</option>
-                            <option value="Zambian">Zambian</option>
-                            <option value="Zimbabwean">Zimbabwean</option>
-                            <option value="American">American</option>
-                            <option value="Canadian">Canadian</option>
-                            <option value="Indian">Indian</option>
-                            <option value="Chinese">Chinese</option>
-                            <option value="German">German</option>
-                            <option value="French">French</option>
-                            <option value="Italian">Italian</option>
-                            <option value="Dutch">Dutch</option>
-                            <option value="Spanish">Spanish</option>
-                            <option value="Portuguese">Portuguese</option>
-                            <option value="Australian">Australian</option>
-                            <option value="Kenyan">Kenyan</option>
-                            <option value="Nigerian">Nigerian</option>
-                            <option value="Tanzanian">Tanzanian</option>
-                            <option value="Ghanaian">Ghanaian</option>
-                            <option value="Other">Other</option>
-                        </select>
-                        <div class="error-message" id="nationalityError">Select nationality</div>
-                    </div>
-
-                    <div class="divider"></div>
-
-                    <!-- Stay Preferences -->
-                    <div class="section-title">
-                        <span class="icon">🏡</span>
-                        Stay Preferences
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label" for="stayType">Type of Stay</label>
-                            <select id="stayType" class="form-select" required>
-                                <option value="" disabled selected>Select</option>
-                                <option value="Villa">Villa</option>
-                                <option value="Apartment">Apartment</option>
-                                <option value="House">House</option>
-                                <option value="Room in a Lodge">Room in a Lodge</option>
-                                <option value="Room in a Hotel">Room in a Hotel</option>
-                            </select>
-                            <div class="error-message" id="stayTypeError">Select type of stay</div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="roomType">Room Type</label>
-                            <select id="roomType" class="form-select" required>
-                                <option value="" disabled selected>Select</option>
-                                <option value="Single">Single</option>
-                                <option value="Double">Double</option>
-                                <option value="Deluxe">Deluxe</option>
-                            </select>
-                            <div class="error-message" id="roomTypeError">Select room type</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="budget">Budget Range</label>
-                        <select id="budget" class="form-select" required>
-                            <option value="" disabled selected>Select budget (MWK per night)</option>
-                            <option value="MWK 150K">MWK 150K per night</option>
-                            <option value="MWK 200K">MWK 200K per night</option>
-                            <option value="MWK 300K">MWK 300K per night</option>
-                            <option value="MWK 400K">MWK 400K per night</option>
-                            <option value="MWK 500K">MWK 500K per night</option>
-                            <option value="MWK 600K">MWK 600K per night</option>
-                            <option value="MWK 750K">MWK 750K per night</option>
-                            <option value="MWK 1M">MWK 1M per night</option>
-                        </select>
-                        <div class="error-message" id="budgetError">Select budget range</div>
-                    </div>
-
-                    <div class="divider"></div>
-
-                    <!-- Special Requests -->
-                    <div class="section-title">
-                        <span class="icon">✨</span>
-                        Special Requests
-                    </div>
-                    <div class="form-group">
-                        <textarea id="requests" class="form-textarea" placeholder="Any special requirements, preferences, or questions..." required></textarea>
-                        <div class="error-message" id="requestsError">Please enter your special requests</div>
-                    </div>
-
-                    <div class="divider"></div>
-
-                    <!-- Contact Info -->
-                    <div class="section-title">
-                        <span class="icon">👤</span>
-                        Contact Info
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="name">Full Name</label>
-                        <input type="text" id="name" class="form-input" placeholder="Your full name" required>
-                        <div class="error-message" id="nameError">Please enter your name</div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="phone">Phone Number</label>
-                        <input type="tel" id="phone" class="form-input" placeholder="e.g. +265 983 311 818" required>
-                        <div class="error-message" id="phoneError">Please enter your phone number</div>
-                    </div>
-
+                <div class="section-label-form">📍 Destination</div>
+                <div class="form-group">
+                    <select id="destination" class="form-select" required>
+                        <option value="" disabled selected>Select destination</option>
+                        <option value="Blantyre">Blantyre</option>
+                        <option value="Chikwawa">Chikwawa</option>
+                        <option value="Lilongwe">Lilongwe</option>
+                        <option value="Mangochi">Mangochi</option>
+                        <option value="Mulanje">Mulanje</option>
+                        <option value="Mzuzu">Mzuzu</option>
+                        <option value="Nkhata Bay">Nkhata Bay</option>
+                        <option value="Nkhotakota">Nkhotakota</option>
+                        <option value="Salima">Salima</option>
+                        <option value="Thyolo">Thyolo</option>
+                        <option value="Zomba">Zomba</option>
+                    </select>
+                    <div class="error-msg" id="destinationError">Please select a destination</div>
                 </div>
 
-                <div class="footer">
-                    Trippa &copy; 2026. Your journey starts here.
+                <div class="divider"></div>
+                <div class="section-label-form">📅 Travel Dates</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="checkin">Check-in</label>
+                        <input type="date" id="checkin" class="form-input" required>
+                        <div class="error-msg" id="checkinError">Select a date</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="checkout">Check-out</label>
+                        <input type="date" id="checkout" class="form-input" required>
+                        <div class="error-msg" id="checkoutError">Select a date</div>
+                    </div>
                 </div>
+
+                <div class="divider"></div>
+                <div class="section-label-form">👥 Guest Details</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Adults</label>
+                        <select id="adults" class="form-select" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6+</option>
+                        </select>
+                        <div class="error-msg" id="adultsError">Required</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Children</label>
+                        <select id="children" class="form-select" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                        <div class="error-msg" id="childrenError">Required</div>
+                    </div>
+                </div>
+                <div class="form-group" id="childrenAgesGroup" style="display:none;">
+                    <label class="form-label" for="childrenAges">Children's Ages</label>
+                    <input type="text" id="childrenAges" class="form-input" placeholder="e.g. 5, 8, 12">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Nationality</label>
+                    <select id="nationality" class="form-select" required>
+                        <option value="" disabled selected>Select nationality</option>
+                        <option value="Malawian">Malawian</option>
+                        <option value="South African">South African</option>
+                        <option value="British">British</option>
+                        <option value="Mozambican">Mozambican</option>
+                        <option value="Zambian">Zambian</option>
+                        <option value="Zimbabwean">Zimbabwean</option>
+                        <option value="American">American</option>
+                        <option value="Canadian">Canadian</option>
+                        <option value="Indian">Indian</option>
+                        <option value="Chinese">Chinese</option>
+                        <option value="German">German</option>
+                        <option value="French">French</option>
+                        <option value="Italian">Italian</option>
+                        <option value="Dutch">Dutch</option>
+                        <option value="Spanish">Spanish</option>
+                        <option value="Portuguese">Portuguese</option>
+                        <option value="Australian">Australian</option>
+                        <option value="Kenyan">Kenyan</option>
+                        <option value="Nigerian">Nigerian</option>
+                        <option value="Tanzanian">Tanzanian</option>
+                        <option value="Ghanaian">Ghanaian</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <div class="error-msg" id="nationalityError">Required</div>
+                </div>
+
+                <div class="divider"></div>
+                <div class="section-label-form">🏡 Stay Preferences</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Type of Stay</label>
+                        <select id="stayType" class="form-select" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="Villa">Villa</option>
+                            <option value="Apartment">Apartment</option>
+                            <option value="House">House</option>
+                            <option value="Room in a Lodge">Room in a Lodge</option>
+                            <option value="Room in a Hotel">Room in a Hotel</option>
+                        </select>
+                        <div class="error-msg" id="stayTypeError">Required</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Room Type</label>
+                        <select id="roomType" class="form-select" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="Single">Single</option>
+                            <option value="Double">Double</option>
+                            <option value="Deluxe">Deluxe</option>
+                        </select>
+                        <div class="error-msg" id="roomTypeError">Required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Budget Range</label>
+                    <select id="budget" class="form-select" required>
+                        <option value="" disabled selected>Select budget (MWK per night)</option>
+                        <option value="MWK 150K">MWK 150K per night</option>
+                        <option value="MWK 200K">MWK 200K per night</option>
+                        <option value="MWK 300K">MWK 300K per night</option>
+                        <option value="MWK 400K">MWK 400K per night</option>
+                        <option value="MWK 500K">MWK 500K per night</option>
+                        <option value="MWK 600K">MWK 600K per night</option>
+                        <option value="MWK 750K">MWK 750K per night</option>
+                        <option value="MWK 1M">MWK 1M per night</option>
+                    </select>
+                    <div class="error-msg" id="budgetError">Required</div>
+                </div>
+
+                <div class="divider"></div>
+                <div class="section-label-form">✨ Special Requests</div>
+                <div class="form-group">
+                    <textarea id="requests" class="form-textarea" placeholder="Candle setup, champagne, surprise..."></textarea>
+                </div>
+
+                <div class="divider"></div>
+                <div class="section-label-form">👤 Contact Info</div>
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" id="name" class="form-input" placeholder="Your full name" required>
+                    <div class="error-msg" id="nameError">Required</div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" id="phone" class="form-input" placeholder="+265 983 311 818" required>
+                    <div class="error-msg" id="phoneError">Required</div>
+                </div>
+
+                <button type="button" class="btn-submit" onclick="submitForm()">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Send on WhatsApp
+                </button>
             </form>
-        </div>
-    </main>
-
-    <!-- Sticky WhatsApp CTA -->
-    <div class="sticky-cta">
-        <div class="container">
-            <button type="button" class="btn-whatsapp" id="submitBtn">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                </svg>
-                Send Enquiry on WhatsApp
-            </button>
         </div>
     </div>
 
     <script>
+        // Modal
+        function openModal() {
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        function closeModalOutside(e) {
+            if (e.target === document.getElementById('modalOverlay')) closeModal();
+        }
+
+        // Min dates
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('checkin').setAttribute('min', today);
         document.getElementById('checkout').setAttribute('min', today);
-
         document.getElementById('checkin').addEventListener('change', function() {
             document.getElementById('checkout').setAttribute('min', this.value);
-            if (document.getElementById('checkout').value && document.getElementById('checkout').value < this.value) {
-                document.getElementById('checkout').value = '';
-            }
+            if (document.getElementById('checkout').value < this.value) document.getElementById('checkout').value = '';
         });
 
+        // Children ages toggle
         document.getElementById('children').addEventListener('change', function() {
             document.getElementById('childrenAgesGroup').style.display = this.value > 0 ? 'block' : 'none';
         });
 
+        // Clear errors on input
         document.querySelectorAll('.form-input, .form-select').forEach(function(input) {
             input.addEventListener('input', function() {
                 this.classList.remove('error');
-                const errorEl = document.getElementById(this.id + 'Error');
-                if (errorEl) errorEl.classList.remove('visible');
+                const el = document.getElementById(this.id + 'Error');
+                if (el) el.classList.remove('visible');
             });
         });
 
+        // Validate
         function validateForm() {
-            let isValid = true;
-            const requiredFields = [
-                { id: 'destination', errorId: 'destinationError' },
-                { id: 'checkin', errorId: 'checkinError' },
-                { id: 'checkout', errorId: 'checkoutError' },
-                { id: 'adults', errorId: 'adultsError' },
-                { id: 'children', errorId: 'childrenError' },
-                { id: 'nationality', errorId: 'nationalityError' },
-                { id: 'stayType', errorId: 'stayTypeError' },
-                { id: 'roomType', errorId: 'roomTypeError' },
-                { id: 'budget', errorId: 'budgetError' },
-                { id: 'requests', errorId: 'requestsError' },
-                { id: 'name', errorId: 'nameError' },
-                { id: 'phone', errorId: 'phoneError' }
+            let valid = true;
+            const fields = [
+                'destination','checkin','checkout','adults','children','nationality',
+                'stayType','roomType','budget','name','phone'
             ];
-
-            requiredFields.forEach(function(field) {
-                const el = document.getElementById(field.id);
-                const errorEl = document.getElementById(field.errorId);
+            fields.forEach(function(id) {
+                const el = document.getElementById(id);
+                const err = document.getElementById(id + 'Error');
                 if (!el.value.trim()) {
                     el.classList.add('error');
-                    if (errorEl) errorEl.classList.add('visible');
-                    isValid = false;
+                    if (err) err.classList.add('visible');
+                    valid = false;
                 }
             });
-
-            if (!isValid) {
-                const firstError = document.querySelector('.form-input.error, .form-select.error');
-                if (firstError) {
-                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
+            if (!valid) {
+                const first = document.querySelector('.form-input.error, .form-select.error');
+                if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
-
-            return isValid;
+            return valid;
         }
 
-        function formatDate(dateStr) {
-            if (!dateStr) return '';
-            const date = new Date(dateStr + 'T00:00:00');
+        // Format date
+        function formatDate(d) {
+            if (!d) return '';
+            const date = new Date(d + 'T00:00:00');
             return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
         }
 
+        // Generate message
         function generateMessage() {
-            const data = {
-                destination: document.getElementById('destination').value.trim(),
+            const d = {
+                destination: document.getElementById('destination').value,
                 checkin: formatDate(document.getElementById('checkin').value),
                 checkout: formatDate(document.getElementById('checkout').value),
                 adults: document.getElementById('adults').value,
                 children: document.getElementById('children').value,
                 childrenAges: document.getElementById('childrenAges').value.trim(),
-                nationality: document.getElementById('nationality').value.trim(),
+                nationality: document.getElementById('nationality').value,
                 stayType: document.getElementById('stayType').value,
                 roomType: document.getElementById('roomType').value,
-                budget: document.getElementById('budget').value.trim(),
+                budget: document.getElementById('budget').value,
                 requests: document.getElementById('requests').value.trim(),
                 name: document.getElementById('name').value.trim(),
                 phone: document.getElementById('phone').value.trim()
             };
 
-            let msg = `Hi Trippa 👋\n\n`;
-            msg += `I'd like help finding a stay:\n\n`;
-            msg += `📍 Destination: ${data.destination}\n`;
-            msg += `📅 Dates: ${data.checkin} - ${data.checkout}\n\n`;
+            let msg = `Hi Trippa 👋\n\nI'd like to plan a romantic escape:\n\n`;
+            msg += `📍 Destination: ${d.destination}\n`;
+            msg += `📅 Dates: ${d.checkin} - ${d.checkout}\n\n`;
             msg += `👥 Guests:\n`;
-            msg += `• Adults: ${data.adults}\n`;
-            msg += `• Children: ${data.children}`;
-            if (data.children > 0 && data.childrenAges) {
-                msg += ` (Ages: ${data.childrenAges})`;
-            }
-            msg += `\n`;
-            if (data.nationality) {
-                msg += `🌍 Nationality: ${data.nationality}\n`;
-            }
-            msg += `\n`;
-            if (data.stayType) {
-                msg += `🏡 Stay Type: ${data.stayType}\n`;
-            }
-            if (data.roomType) {
-                msg += `🛏 Room Type: ${data.roomType}\n`;
-            }
-            if (data.budget) {
-                msg += `\n💰 Budget: ${data.budget}\n`;
-            }
-            if (data.requests) {
-                msg += `\n✨ Special requests: ${data.requests}\n`;
-            }
-            msg += `\nName: ${data.name}\n`;
-            msg += `Phone: ${data.phone}`;
-
+            msg += `• Adults: ${d.adults}\n`;
+            msg += `• Children: ${d.children}`;
+            if (d.children > 0 && d.childrenAges) msg += ` (Ages: ${d.childrenAges})`;
+            msg += `\n🌍 Nationality: ${d.nationality}\n\n`;
+            msg += `🏡 Stay Type: ${d.stayType}\n`;
+            msg += `🛏 Room Type: ${d.roomType}\n`;
+            msg += `💰 Budget: ${d.budget}\n`;
+            if (d.requests) msg += `\n✨ Special requests: ${d.requests}\n`;
+            msg += `\nName: ${d.name}\nPhone: ${d.phone}`;
             return msg;
         }
 
-        document.getElementById('submitBtn').addEventListener('click', function() {
+        // Submit
+        function submitForm() {
             if (!validateForm()) return;
-
             const message = generateMessage();
-            const whatsappNumber = '265983311818';
-            const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            const url = `https://wa.me/265983311818?text=${encodeURIComponent(message)}`;
             window.open(url, '_blank');
+            closeModal();
+        }
+
+        // Scroll reveal
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(function(el) {
+            observer.observe(el);
         });
     </script>
 </body>

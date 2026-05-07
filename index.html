@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trippa — Romantic Pool Escapes in Malawi</title>
+    <title>Trippa | Romantic Pool Escapes in Malawi</title>
     <meta name="description" content="Plan the perfect romantic private pool escape in Malawi within 24 hours. Curated stays for couples.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -209,10 +209,16 @@
 
         .value-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
             max-width: 900px;
             margin: 0 auto;
+        }
+        @media (min-width: 768px) {
+            .value-grid {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 20px;
+            }
         }
 
         .value-card {
@@ -488,10 +494,15 @@
 
         .proof-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: 1fr;
             gap: 20px;
             max-width: 900px;
             margin: 0 auto;
+        }
+        @media (min-width: 768px) {
+            .proof-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
 
         .proof-card {
@@ -816,6 +827,122 @@
         .btn-submit:active { transform: scale(0.98); }
         .btn-submit svg { width: 20px; height: 20px; }
 
+        /* Price Anchor */
+        .anchor-section {
+            padding: var(--section-padding);
+            background: var(--bg);
+        }
+        .anchor-card {
+            background: var(--white);
+            border: 2px solid var(--gold);
+            border-radius: var(--radius-lg);
+            padding: 32px 24px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .anchor-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--dark);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .anchor-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--light-border);
+            font-size: 15px;
+            color: var(--text-muted);
+        }
+        .anchor-row:last-of-type { border-bottom: none; }
+        .anchor-row.highlight {
+            background: linear-gradient(135deg, var(--gold), #B8845A);
+            color: var(--white);
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-top: 16px;
+            border: none;
+            font-weight: 600;
+        }
+        .anchor-cost { font-weight: 600; color: var(--dark); white-space: nowrap; margin-left: 16px; }
+        .anchor-row.highlight .anchor-cost,
+        .anchor-row.highlight span:first-child { color: var(--white); }
+        .anchor-free {
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--gold);
+            margin-left: 16px;
+        }
+        .anchor-note {
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 16px;
+            font-style: italic;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: var(--section-padding);
+            background: var(--white);
+        }
+        .faq-list {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--light-border);
+        }
+        .faq-question {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark);
+            text-align: left;
+            gap: 12px;
+        }
+        .faq-question svg {
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+        .faq-question.active svg {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-muted);
+        }
+        .faq-answer.open {
+            max-height: 200px;
+            padding-bottom: 18px;
+        }
+
+        /* Urgency Bar */
+        .urgency-bar {
+            padding: 16px 0;
+            background: linear-gradient(135deg, #FF6B35, #E85D26);
+            color: var(--white);
+            text-align: center;
+        }
+        .urgency-bar p {
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
         @media (min-width: 768px) {
             .modal {
                 border-radius: var(--radius-lg);
@@ -835,7 +962,7 @@
         <div class="hero-content">
             <img src="https://i.postimg.cc/pLRpK4Bd/trippa-logo.png" alt="Trippa" class="hero-logo">
             <h1>Plan the perfect romantic <em>pool escape</em> in 24 hours.</h1>
-            <p class="hero-sub">Private pool stays curated for unforgettable weekends — without the stress of searching, comparing, or planning everything yourself.</p>
+            <p class="hero-sub">Private pool stays curated for unforgettable weekends. No stress searching, comparing, or planning everything yourself.</p>
             <button class="btn-primary" onclick="openModal()">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                 Plan My Escape
@@ -856,8 +983,8 @@
     <section class="value-section">
         <div class="container reveal">
             <p class="section-label">Why Trippa</p>
-            <h2>We don't just book stays — we create <em>unforgettable</em> moments.</h2>
-            <p class="subtitle">Romance, privacy, and curated luxury — without the stress of planning it yourself.</p>
+            <h2>We don't just book stays. We create <em>unforgettable</em> moments.</h2>
+            <p class="subtitle">Romance, privacy, and curated luxury. Zero stress planning.</p>
             <div class="value-grid">
                 <div class="value-card">
                     <div class="icon">🏊</div>
@@ -898,7 +1025,7 @@
                     <div class="step-icon">💬</div>
                     <div class="step-number">01</div>
                     <h3>Tell us your vibe</h3>
-                    <p>Budget, dates, city, style — just a few details</p>
+                    <p>Budget, dates, city, style. Just a few details</p>
                 </div>
                 <div class="step">
                     <div class="step-icon">🎯</div>
@@ -919,8 +1046,8 @@
     <!-- OFFER SECTION -->
     <section class="offer-section">
         <div class="container reveal">
-            <p class="section-label">What's included</p>
-            <h2>Everything you need for the perfect romantic weekend.</h2>
+            <p class="section-label">What you get</p>
+            <h2>Everything included in your escape plan</h2>
             <div class="offer-card">
                 <h3>Your Escape Package</h3>
                 <div class="offer-item">
@@ -969,7 +1096,7 @@
                     <div class="offer-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="offer-item-text">
                         <h4>Dedicated concierge support</h4>
-                        <p>We're with you the whole way</p>
+                        <p>We are with you the whole way</p>
                     </div>
                 </div>
                 <div class="offer-cta">
@@ -979,13 +1106,43 @@
         </div>
     </section>
 
+    <!-- PRICE ANCHOR SECTION -->
+    <section class="anchor-section">
+        <div class="container reveal">
+            <div class="anchor-card">
+                <h3>What planning this yourself actually costs</h3>
+                <div class="anchor-row">
+                    <span>Hours spent searching and comparing stays</span>
+                    <span class="anchor-cost">6-10 hours</span>
+                </div>
+                <div class="anchor-row">
+                    <span>Risk of a bad stay ruining the weekend</span>
+                    <span class="anchor-cost">Priceless risk</span>
+                </div>
+                <div class="anchor-row">
+                    <span>Planning romantic setups from scratch</span>
+                    <span class="anchor-cost">4+ hours</span>
+                </div>
+                <div class="anchor-row">
+                    <span>Stress of last minute bookings</span>
+                    <span class="anchor-cost">Relationship tension</span>
+                </div>
+                <div class="anchor-row highlight">
+                    <span>What Trippa does for you</span>
+                    <span class="anchor-free">FREE</span>
+                </div>
+                <p class="anchor-note">We make our money from the stay providers. You pay nothing extra for our planning service.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- EMOTIONAL SECTION -->
     <section class="emotional-section">
         <div class="emotional-bg"></div>
         <div class="emotional-overlay"></div>
         <div class="emotional-content reveal">
-            <h2>This isn't just accommodation.</h2>
-            <p>"It's the weekend your partner will never forget."</p>
+            <h2>This is not just accommodation.</h2>
+            <p>"It is the weekend your partner will never forget."</p>
         </div>
     </section>
 
@@ -996,12 +1153,12 @@
                 <div class="guarantee-card">
                     <div class="icon">⚡</div>
                     <h3>Escape Plan in 24 Hours</h3>
-                    <p>Get personalized romantic escape options fast. Tell us what you want, and we'll deliver curated stays within a day.</p>
+                    <p>Get personalized romantic escape options fast. Tell us what you want, and we deliver curated stays within a day.</p>
                 </div>
                 <div class="guarantee-card">
                     <div class="icon">💎</div>
-                    <h3>No Pressure Guarantee</h3>
-                    <p>If you don't love the options we send, we refine them until you do. No pressure, no hassle.</p>
+                    <h3>Love It Guarantee</h3>
+                    <p>If you do not love the options we send, we refine them until you do. Zero risk. Zero pressure.</p>
                 </div>
             </div>
         </div>
@@ -1010,23 +1167,23 @@
     <!-- SOCIAL PROOF -->
     <section class="proof-section">
         <div class="container reveal">
-            <p class="section-label">Testimonials</p>
+            <p class="section-label">Real couples. Real weekends.</p>
             <h2>Loved by couples across Malawi</h2>
             <div class="proof-grid">
                 <div class="proof-card">
                     <div class="proof-stars">★★★★★</div>
-                    <blockquote>"She said YES at the villa Trippa found us 💍 The pool setup was absolutely perfect."</blockquote>
+                    <blockquote>"She said YES at the villa Trippa found us. The pool setup was absolutely perfect."</blockquote>
                     <div class="proof-author">
                         <div class="proof-avatar">J</div>
                         <div>
-                            <div class="proof-name">James & Thandi</div>
+                            <div class="proof-name">James and Thandi</div>
                             <div class="proof-location">Mangochi</div>
                         </div>
                     </div>
                 </div>
                 <div class="proof-card">
                     <div class="proof-stars">★★★★★</div>
-                    <blockquote>"Best anniversary surprise ever! The pool setup was unreal 🌹 My wife couldn't stop smiling."</blockquote>
+                    <blockquote>"Best anniversary surprise ever. The pool setup was unreal. My wife could not stop smiling."</blockquote>
                     <div class="proof-author">
                         <div class="proof-avatar">C</div>
                         <div>
@@ -1041,7 +1198,7 @@
                     <div class="proof-author">
                         <div class="proof-avatar">B</div>
                         <div>
-                            <div class="proof-name">Blessings & Amayi</div>
+                            <div class="proof-name">Blessings and Amayi</div>
                             <div class="proof-location">Blantyre</div>
                         </div>
                     </div>
@@ -1058,6 +1215,58 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section">
+        <div class="container reveal">
+            <p class="section-label">Common questions</p>
+            <h2>Still wondering about something?</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Is this really free?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">Yes. We earn from the stays themselves, so our planning service costs you nothing. You only pay for your actual stay booking.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        How fast will I get my escape plan?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">Within 24 hours via WhatsApp. Most couples get their personalized plan in just a few hours.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What if I do not like the options?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">No problem. We refine and resend until you love what we send. There is zero pressure to book.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Are the stays actually private?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">Every stay we recommend has a private pool. No shared pools. No crowds. Just you and your partner.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Can I request romantic setups?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">Absolutely. Candle setups, flower petals, champagne, surprise arrangements. Just tell us what you want and we make it happen.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- URGENCY / SCARCITY BAR -->
+    <section class="urgency-bar">
+        <div class="container reveal">
+            <p>🔥 <strong>Limited availability this weekend.</strong> We only plan a few escapes at a time to keep quality high. Secure your slot now.</p>
         </div>
     </section>
 
@@ -1283,6 +1492,20 @@
         }
         function closeModalOutside(e) {
             if (e.target === document.getElementById('modalOverlay')) closeModal();
+        }
+
+        // FAQ toggle
+        function toggleFaq(btn) {
+            const answer = btn.nextElementSibling;
+            const isOpen = answer.classList.contains('open');
+            // Close all
+            document.querySelectorAll('.faq-answer').forEach(function(a) { a.classList.remove('open'); });
+            document.querySelectorAll('.faq-question').forEach(function(q) { q.classList.remove('active'); });
+            // Open clicked if it was closed
+            if (!isOpen) {
+                answer.classList.add('open');
+                btn.classList.add('active');
+            }
         }
 
         // Min dates

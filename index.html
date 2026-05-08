@@ -7,6 +7,7 @@
     <meta name="description" content="Plan the perfect romantic private pool escape in Malawi within 24 hours. Curated stays for couples.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://i.postimg.cc">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -1320,19 +1321,46 @@
             margin: 0 auto;
             text-align: center;
         }
-        .founder-avatar {
+        .founder-avatars {
+            position: relative;
+            width: 140px;
+            height: 100px;
+            margin: 0 auto 20px;
+        }
+        .founder-avatar-ring {
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            object-fit: cover;
+            border: 3px solid var(--bg);
+            position: absolute;
+            top: 0;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+        .founder-avatar-ring.martin {
+            left: 0;
+            z-index: 1;
+        }
+        .founder-avatar-ring.anna {
+            right: 0;
+            z-index: 2;
+        }
+        .founder-heart {
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            width: 28px;
+            height: 28px;
+            background: var(--gold);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
+            font-size: 14px;
+            border: 3px solid var(--bg);
             color: white;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            margin: 0 auto 20px;
         }
         .founder-card h2 {
             font-size: clamp(22px, 4vw, 30px);
@@ -1374,6 +1402,7 @@
             height: 40px;
             border-radius: 50%;
             object-fit: cover;
+            object-position: top center;
             border: 2px solid rgba(201,149,107,0.3);
         }
 
@@ -1443,6 +1472,39 @@
             opacity: 0.85;
             display: block;
         }
+        .slots-visual {
+            max-width: 320px;
+            margin: 12px auto 8px;
+        }
+        .slots-track {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 4px;
+            padding: 8px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 8px;
+        }
+        .slot-dot {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.6);
+            transition: all 0.3s ease;
+        }
+        .slot-dot.filled {
+            background: #fff;
+            box-shadow: 0 0 6px rgba(255,255,255,0.5);
+        }
+        .slot-dot.available {
+            background: rgba(255,255,255,0.25);
+            border: 1.5px solid rgba(255,255,255,0.5);
+        }
+        .slots-note {
+            font-size: 12px !important;
+            opacity: 0.9 !important;
+            margin-top: 6px !important;
+            margin-bottom: 4px !important;
+        }
 
         @media (min-width: 768px) {
             .modal {
@@ -1451,6 +1513,194 @@
                 max-height: 85vh;
             }
             .modal-overlay { align-items: center; }
+        }
+
+        /* IDENTITY SECTION */
+        .identity-section {
+            padding: 80px 20px;
+            background: var(--bg);
+            text-align: center;
+        }
+        .identity-card {
+            max-width: 560px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 36px 24px;
+            border: 2px solid var(--gold);
+        }
+        .identity-card h2 {
+            font-size: clamp(24px, 4vw, 32px);
+            margin-bottom: 24px;
+        }
+        .identity-list {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .identity-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        .identity-check {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #F0FDF4;
+            color: #16A34A;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .identity-close {
+            margin-top: 28px;
+            font-size: 20px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* TRUST BADGES */
+        .trust-section {
+            padding: 32px 20px;
+            background: var(--white);
+            border-top: 1px solid rgba(201,149,107,0.1);
+            border-bottom: 1px solid rgba(201,149,107,0.1);
+        }
+        .trust-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text);
+            font-weight: 500;
+            background: var(--bg);
+            padding: 10px 18px;
+            border-radius: 50px;
+            border: 1px solid rgba(201,149,107,0.15);
+        }
+        .trust-badge .t-icon {
+            font-size: 16px;
+        }
+
+        /* PAYMENT SECTION */
+        .payment-section {
+            padding: 40px 20px;
+            background: var(--warm);
+            text-align: center;
+        }
+        .payment-section h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+        }
+        .payment-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            max-width: 500px;
+            margin: 0 auto 16px;
+        }
+        .payment-logo-wrap {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 8px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(0,0,0,0.06);
+            height: 44px;
+            min-width: 70px;
+        }
+        .payment-logo {
+            height: 26px;
+            max-width: 60px;
+            object-fit: contain;
+            opacity: 0.85;
+            transition: opacity 0.2s;
+        }
+        .payment-logo:hover { opacity: 1; }
+        .payment-powered {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+        .payment-powered strong {
+            color: #00B9FD;
+            font-weight: 700;
+        }
+        .payment-trust-badge {
+            font-size: 12px;
+            color: var(--text-light);
+            text-align: center;
+            margin-top: 8px;
+            padding: 6px 12px;
+            background: #F0F7F0;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        /* LEGAL MODALS */
+        .legal-modal {
+            background: var(--bg);
+            width: 100%;
+            max-width: 640px;
+            max-height: 85vh;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            overflow-y: auto;
+            padding: 32px 24px;
+        }
+        @media (min-width: 768px) {
+            .legal-modal {
+                border-radius: var(--radius-lg);
+                margin: auto;
+            }
+        }
+        .legal-modal h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        .legal-modal .legal-date {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 24px;
+        }
+        .legal-modal h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 24px;
+            margin-bottom: 8px;
+        }
+        .legal-modal p, .legal-modal li {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+        .legal-modal ul {
+            padding-left: 20px;
         }
     </style>
 </head>
@@ -1462,17 +1712,17 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <img src="https://i.postimg.cc/pLRpK4Bd/trippa-logo.png" alt="Trippa" class="hero-logo">
-            <h1>Plan a romantic weekend with a <em>private pool</em>. Done in 24 hours.</h1>
-            <p class="hero-sub">We find you the best pool stays in Malawi. No stress. No searching. Just tell us what you want and we handle the rest.</p>
+            <h1>The fastest way to plan a romantic <em>pool getaway</em> in Malawi. Done in 24 hours.</h1>
+            <p class="hero-sub">We find couples the best private pool stays in Malawi. Curated for romance. Verified for quality. You just tell us what you want and we handle everything.</p>
             <button class="btn-primary" onclick="openModal()">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                Plan My Escape
+                Plan My Romantic Escape
             </button>
-            <p class="hero-trust">Romantic pool stays. All over Malawi.</p>
+            <p class="hero-trust">Private pool escapes for couples. Across Malawi.</p>
             <div class="hero-badges">
                 <span class="hero-badge">⚡ Avg. 3.2hr response</span>
-                <span class="hero-badge">💎 Hand picked stays</span>
-                <span class="hero-badge">⭐ 500+ couples helped</span>
+                <span class="hero-badge">💎 Curated for couples</span>
+                <span class="hero-badge">⭐ 500+ couples escaped</span>
             </div>
         </div>
         <div class="scroll-indicator">
@@ -1484,7 +1734,7 @@
     <section class="interrupt-section">
         <div class="container reveal">
             <div class="interrupt-card">
-                <p>Most couples spend <em>6+ hours</em> comparing places. Then book the wrong one. Here's the truth: you don't need more options. You need the <em>right</em> one.</p>
+                <p>You dream of a private pool escape with your partner. Sunset swims. Champagne by the water. A room that feels like it was made just for the two of you. But every time you try to plan it, you hit the same wall. Hours of scrolling through Facebook and Google. Places that look romantic in the photos but arrive and the pool is shared, the room is ordinary, and the magic you wanted just is not there. <em>That</em> is the cost of guessing. You do not need more options. You need someone who knows exactly which stays deliver the dream.</p>
                 <div class="interrupt-stat">
                     <span class="live-dot"></span>
                     <span id="liveCounter">4 couples are planning right now</span>
@@ -1496,34 +1746,34 @@
     <!-- VALUE PROPOSITION -->
     <section class="value-section">
         <div class="container reveal">
-            <p class="section-label">Why Choose Trippa</p>
-            <h2>We plan your weekend. You make the <em>memories</em>.</h2>
-            <p class="subtitle">Private pools. Romantic touches. Zero stress.</p>
+            <p class="section-label">Why Trippa</p>
+            <h2>Romantic pool getaways, <em>curated for couples</em>.</h2>
+            <p class="subtitle">Private pools. Romantic touches. Zero planning stress.</p>
             <div class="value-grid">
                 <div class="value-card">
                     <div class="icon">🏊</div>
-                    <h3>Private Pools</h3>
-                    <p>No shared pools. Just you two.</p>
+                    <h3>Private Pool Stays</h3>
+                    <p>Only places with real private pools for two. No sharing. No surprises.</p>
                 </div>
                 <div class="value-card">
                     <div class="icon">🌹</div>
                     <h3>Romantic Touches</h3>
-                    <p>Candles, flowers, champagne on request</p>
+                    <p>Candles, flowers, champagne, surprise setups on request.</p>
                 </div>
                 <div class="value-card">
                     <div class="icon">✨</div>
-                    <h3>Made for You</h3>
-                    <p>Fits your vibe and your budget</p>
+                    <h3>Curated for You</h3>
+                    <p>Every stay picked to match your vibe and your budget.</p>
                 </div>
                 <div class="value-card">
                     <div class="icon">⚡</div>
-                    <h3>Fast Response</h3>
-                    <p>We plan your escape within a day</p>
+                    <h3>24 Hour Planning</h3>
+                    <p>Tell us what you want. We send perfect picks within a day.</p>
                 </div>
                 <div class="value-card">
                     <div class="icon">🔒</div>
-                    <h3>Trusted Picks</h3>
-                    <p>Every place we know and trust</p>
+                    <h3>Personally Verified</h3>
+                    <p>We check every property before it reaches you. No bad surprises.</p>
                 </div>
             </div>
         </div>
@@ -1533,25 +1783,25 @@
     <section class="how-section">
         <div class="container reveal">
             <p class="section-label">How It Works</p>
-            <h2>Your weekend sorted in 3 steps</h2>
+            <h2>Your romantic pool getaway in 3 simple steps</h2>
             <div class="steps">
                 <div class="step">
                     <div class="step-icon">💬</div>
                     <div class="step-number">01</div>
-                    <h3>Tell us what you want</h3>
-                    <p>Where, when, and your budget. Under 2 minutes.</p>
+                    <h3>Tell us your dream</h3>
+                    <p>Where you want to go, when, and your budget. Takes under 2 minutes.</p>
                 </div>
                 <div class="step">
                     <div class="step-icon">🎯</div>
                     <div class="step-number">02</div>
-                    <h3>We send 3 perfect picks</h3>
-                    <p>Hand picked pool stays within 24 hours on WhatsApp</p>
+                    <h3>We find your perfect stays</h3>
+                    <p>We send 3 hand picked romantic pool getaways within 24 hours on WhatsApp.</p>
                 </div>
                 <div class="step">
                     <div class="step-icon">🥂</div>
                     <div class="step-number">03</div>
-                    <h3>You show up and enjoy</h3>
-                    <p>We plan. You relax. Your partner will love it.</p>
+                    <h3>You escape and enjoy</h3>
+                    <p>We handle planning and booking. You just show up and watch their face light up.</p>
                 </div>
             </div>
         </div>
@@ -1561,14 +1811,14 @@
     <section class="offer-section">
         <div class="container reveal">
             <p class="section-label">What You Get</p>
-            <h2>Everything included. All free.</h2>
+            <h2>Your romantic escape package. Everything included. All free.</h2>
             <div class="offer-card">
-                <h3>Your Romantic Escape Package</h3>
+                <h3>The Romantic Pool Getaway Package</h3>
                 <div class="offer-item">
                     <div class="offer-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="offer-item-text">
-                        <h4>Personalized Escape Plan</h4>
-                        <p>Hand picked pool stays for your weekend</p>
+                        <h4>Curated Escape Plan</h4>
+                        <p>Hand picked romantic pool stays tailored for you and your partner</p>
                     </div>
                     <span class="offer-value">MWK 50,000</span>
                 </div>
@@ -1576,23 +1826,23 @@
                     <div class="offer-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="offer-item-text">
                         <h4>Romantic Setup Coordination</h4>
-                        <p>Candles, flowers, champagne, we arrange it</p>
+                        <p>Candles, flowers, champagne, surprise dinners — we arrange it all. Our coordination is free. You only pay actual cost at wholesale prices.</p>
                     </div>
                     <span class="offer-value">MWK 25,000</span>
                 </div>
                 <div class="offer-item">
                     <div class="offer-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="offer-item-text">
-                        <h4>Local Restaurant & Activity Guide</h4>
-                        <p>Best dining and experiences near your stay</p>
+                        <h4>Local Guide & Dining Picks</h4>
+                        <p>Best romantic restaurants and experiences near your stay</p>
                     </div>
                     <span class="offer-value">MWK 20,000</span>
                 </div>
                 <div class="offer-item">
                     <div class="offer-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="offer-item-text">
-                        <h4>Priority Booking Support</h4>
-                        <p>We push your booking to the top</p>
+                        <h4>Priority Booking Service</h4>
+                        <p>We fast track your reservation with the lodge</p>
                     </div>
                     <span class="offer-value">MWK 15,000</span>
                 </div>
@@ -1600,15 +1850,15 @@
                     <div class="offer-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="offer-item-text">
                         <h4>Backup Plan Guarantee</h4>
-                        <p>Always a plan B if things change</p>
+                        <p>If your first choice falls through, we have a backup ready</p>
                     </div>
                     <span class="offer-value">MWK 15,000</span>
                 </div>
                 <div class="offer-item">
                     <div class="offer-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="offer-item-text">
-                        <h4>WhatsApp Concierge Support</h4>
-                        <p>Real person helping you the whole way</p>
+                        <h4>WhatsApp Concierge</h4>
+                        <p>Real person helping you from planning to checkout</p>
                     </div>
                     <span class="offer-value">MWK 10,000</span>
                 </div>
@@ -1631,28 +1881,28 @@
     <section class="anchor-section">
         <div class="container reveal">
             <div class="anchor-card">
-                <h3>What planning this yourself actually costs</h3>
+                <h3>What planning a romantic pool getaway yourself actually costs</h3>
                 <div class="anchor-row">
-                    <span>Hours spent searching and comparing stays</span>
+                    <span>Hours spent searching and comparing pool stays</span>
                     <span class="anchor-cost">6 to 10 hours</span>
                 </div>
                 <div class="anchor-row">
-                    <span>Risk of a bad stay ruining the weekend</span>
+                    <span>Risk of booking a place that looks nothing like the photos</span>
                     <span class="anchor-cost">Priceless risk</span>
                 </div>
                 <div class="anchor-row">
-                    <span>Planning romantic setups from scratch</span>
+                    <span>Planning romantic surprises and setups from scratch</span>
                     <span class="anchor-cost">4 plus hours</span>
                 </div>
                 <div class="anchor-row">
-                    <span>Stress of last minute bookings</span>
+                    <span>Stress of last minute bookings ruining your weekend</span>
                     <span class="anchor-cost">Relationship tension</span>
                 </div>
                 <div class="anchor-row highlight">
                     <span>What Trippa does for you</span>
                     <span class="anchor-free">FREE</span>
                 </div>
-                <p class="anchor-note">We get paid by the stays. You pay nothing extra for our service.</p>
+                <p class="anchor-note">Our planning and coordination service is 100% free. One secure payment via PayChangu covers your stay and any addons. We handle the rest.</p>
             </div>
         </div>
     </section>
@@ -1662,20 +1912,20 @@
         <div class="emotional-bg"></div>
         <div class="emotional-overlay"></div>
         <div class="emotional-content reveal">
-            <h2>This is not just a hotel room.</h2>
-            <p>"It is the weekend your partner will talk about for years."</p>
+            <h2>This is not just a hotel room. It is your romantic escape.</h2>
+            <p>"The weekend your partner will talk about for years begins here."</p>
             <div class="emotional-sensory">
                 <div class="sensory-item">
                     <span class="sensory-icon">🌊</span>
-                    <span>Feel the warm pool water under the stars</span>
+                    <span>Feel the warm pool water under the stars with no one else around</span>
                 </div>
                 <div class="sensory-item">
                     <span class="sensory-icon">🥂</span>
-                    <span>Taste the champagne waiting in your room</span>
+                    <span>Taste the champagne waiting for you in your room</span>
                 </div>
                 <div class="sensory-item">
                     <span class="sensory-icon">🌹</span>
-                    <span>Wake up to rose petals on your bed</span>
+                    <span>Wake up to rose petals, soft candles, and their smile</span>
                 </div>
             </div>
         </div>
@@ -1687,50 +1937,50 @@
             <h2>The difference is <em>everything</em>.</h2>
             <div class="comparison-grid">
                 <div class="comparison-col before">
-                    <div class="comparison-label">Without Trippa</div>
+                    <div class="comparison-label">Booking on Your Own</div>
                     <div class="comparison-item">
                         <span class="comparison-icon">✕</span>
-                        <span>Hours scrolling through Google and Facebook</span>
+                        <span>Hours scrolling through Google, Facebook, and booking sites</span>
                     </div>
                     <div class="comparison-item">
                         <span class="comparison-icon">✕</span>
-                        <span>No idea which places have real pools vs small tubs</span>
+                        <span>No way to know if the pool is actually private or just a small tub</span>
                     </div>
                     <div class="comparison-item">
                         <span class="comparison-icon">✕</span>
-                        <span>Arrive and find nothing like the photos</span>
+                        <span>Arrive and find nothing like the photos. Weekend ruined.</span>
                     </div>
                     <div class="comparison-item">
                         <span class="comparison-icon">✕</span>
-                        <span>Stress of booking last minute at high prices</span>
+                        <span>Last minute bookings at high prices with no romantic touches</span>
                     </div>
                     <div class="comparison-item">
                         <span class="comparison-icon">✕</span>
-                        <span>No romantic setup. Weekend feels ordinary.</span>
+                        <span>No candlelit dinners, no surprises, just another ordinary weekend</span>
                     </div>
                 </div>
-                <div class="comparison-vs">vs</div>
+                <div class="comparison-vs">or</div>
                 <div class="comparison-col after">
                     <div class="comparison-label">With Trippa</div>
                     <div class="comparison-item">
                         <span class="comparison-icon">✓</span>
-                        <span>Tell us what you want in under 2 minutes</span>
+                        <span>Tell us what you want in under 2 minutes. We do the rest.</span>
                     </div>
                     <div class="comparison-item">
                         <span class="comparison-icon">✓</span>
-                        <span>We only recommend places we have personally checked</span>
+                        <span>We only recommend romantic pool stays we have personally verified</span>
                     </div>
                     <div class="comparison-item">
                         <span class="comparison-icon">✓</span>
-                        <span>Private pool, candles, flowers, all arranged</span>
+                        <span>Private pool, candles, flowers, champagne, all arranged for you</span>
                     </div>
                     <div class="comparison-item">
                         <span class="comparison-icon">✓</span>
-                        <span>Best prices negotiated on your behalf</span>
+                        <span>Best prices negotiated on your behalf through our lodge relationships</span>
                     </div>
                     <div class="comparison-item">
                         <span class="comparison-icon">✓</span>
-                        <span>Your partner looks at you like you are a genius</span>
+                        <span>Your partner looks at you like you are the most romantic person alive</span>
                     </div>
                 </div>
             </div>
@@ -1743,13 +1993,13 @@
             <div class="guarantee-grid">
                 <div class="guarantee-card">
                     <div class="icon">⚡</div>
-                    <h3>Your Plan in 24 Hours</h3>
-                    <p>Tell us what you want. We send 3 hand picked pool stays within a day. Most couples hear back in just a few hours.</p>
+                    <h3>Your Romantic Getaway in 24 Hours</h3>
+                    <p>Tell us your dream. We send 3 hand picked romantic pool stays within a day. Most couples hear back in just a few hours.</p>
                 </div>
                 <div class="guarantee-card">
                     <div class="icon">💎</div>
-                    <h3>Love It or We Try Again</h3>
-                    <p>If you don't love our picks, we send new ones. We keep going until you say yes. No pressure to book at all.</p>
+                    <h3>Love It or We Find You Better. Free.</h3>
+                    <p>If our romantic pool picks do not make you say "wow," we keep searching until they do. And if you book through us and the stay does not match what we promised, we will find you a better one at no extra cost. That is our guarantee. No risk at all.</p>
                 </div>
             </div>
         </div>
@@ -1758,14 +2008,14 @@
     <!-- SOCIAL PROOF -->
     <section class="proof-section">
         <div class="container reveal">
-            <p class="section-label">Real Couples. Real Weekends.</p>
+            <p class="section-label">Real Couples. Real Romantic Getaways.</p>
             <h2>Over 500 couples escaped with Trippa</h2>
             <div class="proof-grid">
                 <div class="proof-card">
                     <div class="proof-stars">★★★★★</div>
-                    <blockquote>"She said YES at The Makokola Retreat. The infinity pool, the sunset, the rose petals on our bed, everything was perfect."</blockquote>
+                    <blockquote>"She said YES at The Makokola Retreat. The infinity pool at sunset, the rose petals on our bed, the private dinner by the water. Everything was perfect."</blockquote>
                     <div class="proof-author">
-                        <img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?auto=format&fit=crop&w=80&h=80&q=80" alt="James" class="proof-avatar-img" loading="lazy">
+                        <img src="https://i.postimg.cc/Dw6241Qd/couple.avif" alt="James" class="proof-avatar-img" loading="lazy">
                         <div>
                             <div class="proof-name">James and Thandi</div>
                             <div class="proof-location">The Makokola Retreat, Mangochi · Dec 2025</div>
@@ -1774,9 +2024,9 @@
                 </div>
                 <div class="proof-card">
                     <div class="proof-stars">★★★★★</div>
-                    <blockquote>"Best anniversary surprise ever. My wife could not stop smiling at Kumbali Country Lodge. Trippa made it so easy."</blockquote>
+                    <blockquote>"Best anniversary surprise ever. My wife could not stop smiling at Kumbali Country Lodge. Trippa made it so easy to plan the perfect romantic pool weekend."</blockquote>
                     <div class="proof-author">
-                        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=80&h=80&q=80" alt="Chikondi" class="proof-avatar-img" loading="lazy">
+                        <img src="https://i.postimg.cc/j570cffm/2148850946.jpg" alt="Chikondi" class="proof-avatar-img" loading="lazy">
                         <div>
                             <div class="proof-name">Chikondi</div>
                             <div class="proof-location">Kumbali Country Lodge, Lilongwe · Jan 2026</div>
@@ -1785,9 +2035,9 @@
                 </div>
                 <div class="proof-card">
                     <div class="proof-stars">★★★★★</div>
-                    <blockquote>"Booked on a Tuesday. By Saturday we were by the pool at Mogfords Lake Resort. Trippa handled everything."</blockquote>
+                    <blockquote>"Booked on a Tuesday. By Saturday we were by the private pool at Mogfords Lake Resort. Trippa handled everything. Best romantic escape we have ever had."</blockquote>
                     <div class="proof-author">
-                        <img src="https://images.unsplash.com/photo-1543807535-eceef0bc6599?auto=format&fit=crop&w=80&h=80&q=80" alt="Blessings" class="proof-avatar-img" loading="lazy">
+                        <img src="https://i.postimg.cc/qRnSyTfP/cheerful-man-woman-having-fun-with-piggyback-ride-studio-boyfriend-carrying-girlfriend-having-romant.jpg" alt="Blessings" class="proof-avatar-img" loading="lazy">
                         <div>
                             <div class="proof-name">Blessings and Amayi</div>
                             <div class="proof-location">Mogfords Lake Resort, Mangochi · Feb 2026</div>
@@ -1796,9 +2046,9 @@
                 </div>
                 <div class="proof-card">
                     <div class="proof-stars">★★★★★</div>
-                    <blockquote>"My wife cried when she saw Villa Kupa. Candle setup, flowers, the Zomba Plateau view. Worth every kwacha."</blockquote>
+                    <blockquote>"My wife cried when she walked into Villa Kupa. Candle setup, flowers, the Zomba Plateau view from our private jacuzzi. Worth every kwacha for that look on her face."</blockquote>
                     <div class="proof-author">
-                        <img src="https://images.unsplash.com/photo-1611432579402-7037e3e3a549?auto=format&fit=crop&w=80&h=80&q=80" alt="David" class="proof-avatar-img" loading="lazy">
+                        <img src="https://i.postimg.cc/pVJ1HkPj/young-stylish-dark-skinned-couple-standing-sunny-city.jpg" alt="David" class="proof-avatar-img" loading="lazy">
                         <div>
                             <div class="proof-name">David</div>
                             <div class="proof-location">Villa Kupa, Zomba · Mar 2026</div>
@@ -1812,8 +2062,8 @@
     <!-- WHATSAPP PROOF SCREENSHOTS -->
     <section class="proof-section-wa">
         <div class="container reveal">
-            <p class="section-label">Real Conversations. Real Results.</p>
-            <h2>See how Trippa works in practice</h2>
+            <p class="section-label">Real WhatsApp Conversations. Real Results.</p>
+            <h2>See exactly how Trippa works for couples like you</h2>
             <div class="wa-grid">
                 <!-- Conversation 1: James & Thandi at The Makokola Retreat -->
                 <div class="wa-screenshot">
@@ -1825,26 +2075,28 @@
                         </div>
                     </div>
                     <div class="wa-body">
-                        <div class="wa-msg">Hey James! Good news! I have found 3 amazing pool stays for your anniversary in Mangochi 🎉</div>
+                        <div class="wa-msg">Hey James! Found 3 amazing pool stays for your anniversary in Mangochi 🎉</div>
                         <div class="wa-msg-time">10:23 AM ✓✓</div>
                         <div class="wa-msg">Option 1: The Makokola Retreat 🌊</div>
                         <div class="wa-msg with-img" style="background:white">
-                            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=280&h=180&q=80" alt="The Makokola Retreat" class="wa-msg-img" loading="lazy">
-                            <div class="wa-msg-img-caption">Lakefront infinity pool, private beach, candle & flower setup included</div>
+                            <img src="https://i.postimg.cc/PfMM0c2v/Makokola.jpg" alt="The Makokola Retreat" class="wa-msg-img" loading="lazy">
+                            <div class="wa-msg-img-caption">Lakefront infinity pool, private beach, romantic setup available</div>
                         </div>
                         <div class="wa-msg-time">10:24 AM ✓✓</div>
-                        <div class="wa-msg incoming">This is incredible 😍 The Makokola Retreat is exactly what I was looking for!</div>
+                        <div class="wa-msg incoming">This is incredible 😍 Exactly what I was dreaming of!</div>
                         <div class="wa-msg-time">10:31 AM</div>
-                        <div class="wa-msg incoming">Can we add a romantic candle and flower setup?</div>
+                        <div class="wa-msg incoming">Can you add the candle and flower setup?</div>
                         <div class="wa-msg-time">10:32 AM</div>
-                        <div class="wa-msg">Already on it! I will have them set up rose petals, candles, and a bottle of sparkling wine when you check in 🌹🥂</div>
+                        <div class="wa-msg">Already on it! Rose petals, candles, and sparkling wine on arrival 🌹🥂</div>
                         <div class="wa-msg-time">10:33 AM ✓✓</div>
-                        <div class="wa-msg incoming">You are a lifesaver! We are booking this one 💯</div>
+                        <div class="wa-msg">Total for setup is MWK 55K at wholesale cost. Want me to add it?</div>
+                        <div class="wa-msg-time">10:33 AM ✓✓</div>
+                        <div class="wa-msg incoming">Yes please! That is a great price. Add it 💯</div>
+                        <div class="wa-msg-time">10:34 AM</div>
+                        <div class="wa-msg incoming">We are booking this one 💯</div>
                         <div class="wa-msg-time">10:35 AM</div>
-                        <div class="wa-msg">Perfect! I have sent the booking details to your WhatsApp. See you there James 🙌</div>
-                        <div class="wa-msg-time">10:36 AM ✓✓</div>
                     </div>
-                    <div class="wa-caption">James booked The Makokola Retreat for his anniversary</div>
+                    <div class="wa-caption">James booked The Makokola Retreat + rose petals, candles and wine setup for MWK 55K</div>
                 </div>
 
                 <!-- Conversation 2: Chikondi at Kumbali Country Lodge -->
@@ -1857,28 +2109,26 @@
                         </div>
                     </div>
                     <div class="wa-body">
-                        <div class="wa-msg">Hi Chikondi! Your Lilongwe picks are ready. I focused on places within your MWK 300K budget 💎</div>
+                        <div class="wa-msg">Hi Chikondi! Your Lilongwe picks are ready. Focused on places within MWK 300K 💎</div>
                         <div class="wa-msg-time">2:15 PM ✓✓</div>
                         <div class="wa-msg">Option 1: Kumbali Country Lodge 🌿</div>
                         <div class="wa-msg with-img" style="background:white">
-                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=280&h=180&q=80" alt="Kumbali Country Lodge" class="wa-msg-img" loading="lazy">
-                            <div class="wa-msg-img-caption">Boutique lodge, serene gardens, pool, 15 min from city centre</div>
+                            <img src="https://i.postimg.cc/fRSmWgjb/Kumbali.jpg" alt="Kumbali Country Lodge" class="wa-msg-img" loading="lazy">
+                            <div class="wa-msg-img-caption">Boutique lodge, 650 hectare forest reserve, serene gardens, pool</div>
                         </div>
                         <div class="wa-msg-time">2:16 PM ✓✓</div>
-                        <div class="wa-msg incoming">Wow Kumbali looks so peaceful 😌 This is perfect for our anniversary!</div>
+                        <div class="wa-msg incoming">Wow this looks so peaceful 😌 Perfect for our anniversary surprise!</div>
                         <div class="wa-msg-time">2:22 PM</div>
-                        <div class="wa-msg incoming">Is it possible to arrange a surprise dinner at the lodge?</div>
+                        <div class="wa-msg incoming">Can you arrange a surprise dinner by the pool?</div>
                         <div class="wa-msg-time">2:23 PM</div>
-                        <div class="wa-msg">Yes! I know the manager personally. Let me call them right now and arrange a private dinner by the pool 🍽️</div>
-                        <div class="wa-msg-time">2:25 PM ✓✓</div>
-                        <div class="wa-msg incoming">You are amazing! Please go ahead 🙏</div>
-                        <div class="wa-msg-time">2:28 PM</div>
-                        <div class="wa-msg">Done! They confirmed a candlelit dinner for Saturday at 7PM. Your wife will love it 😊</div>
-                        <div class="wa-msg-time">2:52 PM ✓✓</div>
-                        <div class="wa-msg incoming">Thank you so much! This is going to be the best weekend ever ❤️</div>
-                        <div class="wa-msg-time">2:55 PM</div>
+                        <div class="wa-msg">Done! Candlelit dinner for Saturday at 7PM. Menu includes starter, mains, dessert and a bottle of wine 🍷</div>
+                        <div class="wa-msg-time">2:48 PM ✓✓</div>
+                        <div class="wa-msg">Total is MWK 95K for two people. Includes candles and private table setup. Want me to confirm?</div>
+                        <div class="wa-msg-time">2:49 PM ✓✓</div>
+                        <div class="wa-msg incoming">Yes! Book it. My wife will love this 😊</div>
+                        <div class="wa-msg-time">2:52 PM</div>
                     </div>
-                    <div class="wa-caption">Chikondi planned his anniversary surprise in 2 hours</div>
+                    <div class="wa-caption">Chikondi surprised his wife with a candlelit pool dinner for MWK 95K in under 2 hours</div>
                 </div>
 
                 <!-- Conversation 3: David at Villa Kupa, Zomba -->
@@ -1891,28 +2141,28 @@
                         </div>
                     </div>
                     <div class="wa-body">
-                        <div class="wa-msg">David! I found something special for you in Zomba. Mountain views, jacuzzi, total privacy 🏔️</div>
+                        <div class="wa-msg">David! Found something special in Zomba. Mountain views, total privacy 🏔️</div>
                         <div class="wa-msg-time">9:04 AM ✓✓</div>
                         <div class="wa-msg">Villa Kupa, check this out:</div>
                         <div class="wa-msg with-img" style="background:white">
-                            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=280&h=180&q=80" alt="Villa Kupa" class="wa-msg-img" loading="lazy">
+                            <img src="https://i.postimg.cc/JtVfvF1m/villa-kupa.jpg" alt="Villa Kupa" class="wa-msg-img" loading="lazy">
                             <div class="wa-msg-img-caption">Luxury suite, Zomba Plateau views, jacuzzi, private garden</div>
                         </div>
                         <div class="wa-msg-time">9:05 AM ✓✓</div>
-                        <div class="wa-msg incoming">This is beautiful! How much per night?</div>
+                        <div class="wa-msg incoming">Beautiful! How much per night for this paradise?</div>
                         <div class="wa-msg-time">9:08 AM</div>
-                        <div class="wa-msg">Regular price is MWK 145K but I got them to drop it to MWK 120K for you. That is almost 20% off 💰</div>
+                        <div class="wa-msg">Regular is MWK 145K but I got it down to MWK 120K for you. Almost 20% off 💰</div>
                         <div class="wa-msg-time">9:10 AM ✓✓</div>
-                        <div class="wa-msg incoming">No way! Let us do it! Can you also arrange the flower and candle setup? 🌹</div>
+                        <div class="wa-msg incoming">No way! Book it now! Can you add the flower and candle setup too? 🌹</div>
                         <div class="wa-msg-time">9:11 AM</div>
-                        <div class="wa-msg">Consider it done! Rose petals, candles, and a welcome note waiting on the bed when you arrive ✨</div>
-                        <div class="wa-msg-time">9:12 AM ✓✓</div>
-                        <div class="wa-msg incoming">You are the best bro! My wife is going to cry 😂❤️</div>
-                        <div class="wa-msg-time">9:13 AM</div>
-                        <div class="wa-msg">That is what we like to hear! Booking confirmed for this weekend. Enjoy David 🥂</div>
-                        <div class="wa-msg-time">9:15 AM ✓✓</div>
+                        <div class="wa-msg">Consider it done! Rose petals, candles, and welcome note on the bed ✨</div>
+                        <div class="wa-msg-time">9:13 AM ✓✓</div>
+                        <div class="wa-msg">Setup cost is MWK 50K at wholesale. Shall I add it?</div>
+                        <div class="wa-msg-time">9:13 AM ✓✓</div>
+                        <div class="wa-msg incoming">Yes! Add it. Perfect 💯</div>
+                        <div class="wa-msg-time">9:14 AM</div>
                     </div>
-                    <div class="wa-caption">David saved MWK 25K and surprised his wife at Villa Kupa, Zomba</div>
+                    <div class="wa-caption">David saved MWK 25K + romantic setup for MWK 50K at Villa Kupa, Zomba</div>
                 </div>
             </div>
         </div>
@@ -1922,17 +2172,24 @@
     <section class="founder-section">
         <div class="container reveal">
             <div class="founder-card">
-                <div class="founder-avatar">M</div>
-                <h2>How Love Built Trippa</h2>
-                <p class="founder-role">Martin and Anna, Founders, married couple, and your biggest escape planners</p>
+            <div class="founder-avatars">
+                <img src="https://i.postimg.cc/pVwpYQws/IMG-20260507-WA0012.jpg" alt="Martin" class="founder-avatar-ring martin" loading="lazy">
+                <img src="https://i.postimg.cc/X7g4Gw4V/IMG-20260507-WA0011.jpg" alt="Anna" class="founder-avatar-ring anna" loading="lazy">
+                <div class="founder-heart">♥</div>
+            </div>
+                <h2>Meet Your Guides</h2>
+                <p class="founder-role">Martin and Anna. 8 years finding the best stays. An eye for romance. Married since 2021. Your escape team.</p>
                 <div class="founder-story">
-                    <p>Martin has always been the romantic one. As a professional travel specialist, he knew how to find places most people never discover. Hidden pools. Secret villas. Stays that make you forget the world exists.</p>
-                    <p>On their 3rd wedding anniversary, Martin planned a surprise escape. Not a regular hotel but something special. A private stay with a pool overlooking the water, candles already lit, flowers waiting on the bed. Anna had no idea.</p>
-                    <p>When she walked in, she was silent for a full minute. Then she turned to Martin and said: <strong>"You are already so good at this. You have a gift. Why are we not helping other couples feel what I feel right now?"</strong></p>
-                    <p>That question changed everything.</p>
-                    <p>Martin brings 8 years of travel industry expertise and he knows every pool stay in Malawi, has personal relationships with lodge owners, and can negotiate prices most people cannot access. Anna brings the heart, the romantic vision, the eye for detail, and the understanding of what makes a weekend feel like a fairytale.</p>
-                    <p>Together, they built Trippa. Not as a company, but as a mission: every couple in Malawi deserves to experience what Martin and Anna experienced that night.</p>
-                    <p>Over 500 couples have already said yes to their own escape. The question is, when will it be your turn?</p>
+                    <p>You want to plan something unforgettable for your partner. A weekend they will talk about for years. Private pool. Candles. Flowers. Champagne. A room that makes them feel truly seen.</p>
+                    <p>But every time you try to plan it, you hit the same wall. Hours of scrolling. Places that look better in photos than real life. Lodges that say "romantic" but deliver ordinary. You are busy. You do not have time to call 20 lodges and hope for the best.</p>
+                    <p>We understand because we have been there.</p>
+                    <p>Martin spent 8 years building relationships with lodge owners across Malawi. He knows which rooms have the best views, which pools are actually private, and which owners deliver on their promises. He calls them directly and gets prices you will never see on Booking.com.</p>
+                    <p>Anna personally checks every room before it reaches you. She tests the lighting at sunset. She makes sure the candles are real. She knows the difference between a nice stay and a stay your partner will cry happy tears over.</p>
+                    <p>Together we built Trippa so you do not have to search, guess, or hope. You tell us what you want. We find the perfect stay and set up the romance. You just show up and watch their face light up.</p>
+                    <p>Over 500 couples have escaped with us. Each one started with a simple message on WhatsApp.</p>
+                    <p><strong>Last month, a man sent us a photo from Makokola. He was on one knee by the pool at sunset. She said yes. They wrote: "We would never have found this place without you. You gave us our beginning."</strong></p>
+                    <p><strong>That is what happens when someone takes the time to plan something beautiful.</strong></p>
+                    <p>Your partner deserves that feeling. And you deserve to be the one who gives it to them. <strong>Tell us what you want. We handle the rest.</strong></p>
                 </div>
                 <p class="founder-signature">Martin and Anna, Founders of Trippa 🇲🇼</p>
             </div>
@@ -1942,43 +2199,43 @@
     <!-- FAQ SECTION -->
     <section class="faq-section">
         <div class="container reveal">
-            <p class="section-label">Common Questions</p>
-            <h2>Still wondering about something?</h2>
+            <p class="section-label">Still Wondering?</p>
+            <h2>Quick answers to your questions</h2>
             <div class="faq-list">
                 <div class="faq-item">
                     <button class="faq-question" onclick="toggleFaq(this)">
                         Is this really free?
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
                     </button>
-                    <div class="faq-answer">Yes. We get paid by the stay providers, not by you. Our planning service costs you nothing. You only pay for the stay itself.</div>
+                    <div class="faq-answer">Yes. Zero cost for our planning service. You only pay one price for your stay and addons — handled securely through PayChangu. We take care of paying the lodge. No hidden fees, no surprises.</div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" onclick="toggleFaq(this)">
                         How fast will I hear back?
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
                     </button>
-                    <div class="faq-answer">Within 24 hours on WhatsApp. Most couples get their picks in just a few hours.</div>
+                    <div class="faq-answer">Within 24 hours. Most couples hear back in a few hours. Fast enough to plan this weekend.</div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" onclick="toggleFaq(this)">
                         What if I don't like the options?
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
                     </button>
-                    <div class="faq-answer">No problem. We send new picks until you love them. There is no pressure to book anything.</div>
+                    <div class="faq-answer">No problem at all. We keep sending new picks until you say yes. No pressure, no rush. We want you to love it.</div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" onclick="toggleFaq(this)">
                         Are the pools really private?
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
                     </button>
-                    <div class="faq-answer">Yes. Every place we recommend has a private pool. No sharing with strangers. Just you and your partner.</div>
+                    <div class="faq-answer">Every stay we recommend has a private pool. No strangers. No crowds. Just you and your partner under the stars.</div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" onclick="toggleFaq(this)">
                         Can you set up candles and flowers?
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
                     </button>
-                    <div class="faq-answer">Yes. Candles, flower petals, champagne, surprise setups, just tell us what you want and we make it happen.</div>
+                    <div class="faq-answer">Absolutely. Candles, rose petals, champagne, a private dinner by the pool — just tell us what you want. We coordinate everything for free. You pay only the wholesale cost of the items, and we always show you the price before you approve.</div>
                 </div>
             </div>
         </div>
@@ -1987,7 +2244,13 @@
     <!-- URGENCY / SCARCITY BAR -->
     <section class="urgency-bar">
         <div class="container reveal">
-            <p>🔥 <strong>Only 12 escape slots left this month.</strong> Lock yours in before they're gone.</p>
+            <p>🔥 <strong>Only <span id="slotsRemaining">12</span> escape slots left this month.</strong> Couples book fast. Do not let their weekend be the one your partner talks about.</p>
+            <div class="slots-visual">
+                <div class="slots-track" id="slotsTrack">
+                    <!-- 20 slots, some filled -->
+                </div>
+                <p class="slots-note"><span id="bookedCount">8</span> already booked this week alone</p>
+            </div>
             <div class="countdown-timer">
                 <div class="countdown-block">
                     <span class="countdown-num" id="cd-days">00</span>
@@ -2006,7 +2269,7 @@
                     <span class="countdown-label">Sec</span>
                 </div>
             </div>
-            <p style="font-size:13px; opacity:0.9; margin-top:6px;">Offer expires at midnight, then prices go back up.</p>
+            <p style="font-size:13px; opacity:0.9; margin-top:6px;">Your dream weekend is almost gone. Prices go back up at midnight.</p>
         </div>
     </section>
 
@@ -2014,30 +2277,30 @@
     <section class="identity-section">
         <div class="container reveal">
             <div class="identity-card">
-                <h2>If this sounds like you...</h2>
+                <h2>This is for you if...</h2>
                 <div class="identity-list">
                     <div class="identity-item">
                         <span class="identity-check">✓</span>
-                        <span>You want to surprise your partner with something special</span>
+                        <span>You want to see your partner's face light up when they walk in</span>
                     </div>
                     <div class="identity-item">
                         <span class="identity-check">✓</span>
-                        <span>You are tired of the same boring hotel weekends</span>
+                        <span>You are done with ordinary hotels that feel like every weekend</span>
                     </div>
                     <div class="identity-item">
                         <span class="identity-check">✓</span>
-                        <span>You want a private pool, romantic setup, no stress</span>
+                        <span>You want a private pool, candles, flowers, all set up for you</span>
                     </div>
                     <div class="identity-item">
                         <span class="identity-check">✓</span>
-                        <span>You don't have time to search and compare 50 places</span>
+                        <span>You have no time to spend hours calling lodges and comparing</span>
                     </div>
                     <div class="identity-item">
                         <span class="identity-check">✓</span>
-                        <span>You want to look like the best partner ever</span>
+                        <span>You want to be the partner who plans the unforgettable weekend</span>
                     </div>
                 </div>
-                <p class="identity-close">Then Trippa was made for you.</p>
+                <p class="identity-close">Then Trippa is your move.</p>
             </div>
         </div>
     </section>
@@ -2045,13 +2308,48 @@
     <!-- FINAL CTA -->
     <section class="final-cta">
         <div class="container reveal">
-            <h2>Your partner deserves this.</h2>
-            <p>Tell us what you want. We find the perfect pool stay. You show up and enjoy.</p>
+            <h2>One message. That is all it takes.</h2>
+            <p>Tell us your dream. We find your perfect romantic pool getaway. You show up and watch their face light up. Free. Fast. No pressure.</p>
             <button class="btn-primary" onclick="openModal()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                Plan My Escape Now
+                Plan My Romantic Escape
             </button>
-            <p class="final-trust">Free planning. No commitment. Response in 24 hours.</p>
+            <p class="final-trust">It is free. We respond in a few hours. If you do not love it, say no.</p>
+        </div>
+    </section>
+
+    <!-- TRUST BADGES -->
+    <section class="trust-section">
+        <div class="container reveal">
+            <div class="trust-grid">
+                <div class="trust-badge"><span class="t-icon">💑</span> 500+ couples escaped</div>
+                <div class="trust-badge"><span class="t-icon">🔒</span> PayChangu secured payments</div>
+                <div class="trust-badge"><span class="t-icon">📱</span> WhatsApp response in hours</div>
+                <div class="trust-badge"><span class="t-icon">🇲🇼</span> 100% personally verified stays</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAYMENT METHODS -->
+    <section class="payment-section">
+        <div class="container reveal">
+            <h3>We accept TNM Mpamba, Airtel Money, Visa, Mastercard and Bank Transfer</h3>
+            <div class="payment-logos">
+                <div class="payment-logo-wrap">
+                    <img src="https://i.postimg.cc/LsrCDb2v/visa.png" alt="Visa" class="payment-logo" loading="lazy">
+                </div>
+                <div class="payment-logo-wrap">
+                    <img src="https://i.postimg.cc/XvFcj76f/tnm.jpg" alt="TNM Mpamba" class="payment-logo" loading="lazy">
+                </div>
+                <div class="payment-logo-wrap">
+                    <img src="https://i.postimg.cc/xjsHSbNB/airtel-money.jpg" alt="Airtel Money" class="payment-logo" loading="lazy">
+                </div>
+                <div class="payment-logo-wrap">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7a3 3 0 0 0 6 0V7H3z"/><path d="M4 21V10.87"/><path d="M20 21V10.87"/><rect x="8" y="12" width="8" height="6" rx="1"/></svg>
+                </div>
+            </div>
+            <p class="payment-powered">All payments secured by <strong>PayChangu</strong></p>
+            <p class="payment-trust-badge">PayChangu is a licensed payment gateway regulated by the Reserve Bank of Malawi</p>
         </div>
     </section>
 
@@ -2059,22 +2357,87 @@
     <footer class="footer">
         <div class="container">
             <img src="https://i.postimg.cc/pLRpK4Bd/trippa-logo.png" alt="Trippa" class="footer-logo">
-            <p>Curated romantic escapes in Malawi</p>
+            <p>Malawi's romantic pool getaway planner</p>
             <div class="footer-links">
                 <a href="https://wa.me/265983311818" target="_blank">WhatsApp</a>
-                <a href="#">Instagram</a>
-                <a href="#">TikTok</a>
-                <a href="#">Privacy Policy</a>
+                <a href="https://www.instagram.com/trippamw" target="_blank">Instagram</a>
+                <a href="https://tiktok.com/@trippamw" target="_blank">TikTok</a>
+                <a href="#" onclick="event.preventDefault();openLegal('privacyModal')">Privacy Policy</a>
+                <a href="#" onclick="event.preventDefault();openLegal('termsModal')">Terms and Conditions</a>
             </div>
             <div class="footer-bottom">© Trippa 2026. All rights reserved.</div>
         </div>
     </footer>
 
+    <!-- PRIVACY POLICY MODAL -->
+    <div class="modal-overlay" id="privacyModal" onclick="closeLegalOutside(event)">
+        <div class="legal-modal">
+            <div class="modal-header">
+                <h2>Privacy Policy</h2>
+                <button class="modal-close" onclick="closeLegal('privacyModal')">✕</button>
+            </div>
+            <p class="legal-date">Last updated: May 7, 2026</p>
+            <p>At Trippa, we respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and share information when you use our service.</p>
+            <h4>Information We Collect</h4>
+            <ul>
+                <li><strong>Personal Details:</strong> Name, phone number, and destination preferences you provide when submitting an enquiry.</li>
+                <li><strong>Usage Data:</strong> Information about how you interact with our website, collected automatically through analytics tools.</li>
+                <li><strong>Payment Information:</strong> Processed securely through PayChangu. We do not store your card or mobile money details on our servers.</li>
+            </ul>
+            <h4>How We Use Your Information</h4>
+            <ul>
+                <li>To prepare and send personalized stay recommendations via WhatsApp.</li>
+                <li>To communicate with you about your booking and any changes.</li>
+                <li>To improve our service and website experience.</li>
+                <li>To process payments securely through our payment provider PayChangu.</li>
+            </ul>
+            <h4>How We Share Your Information</h4>
+            <p>We share your booking details with the accommodation provider to arrange your stay. We do not sell, trade, or rent your personal information to third parties. Payment processing is handled entirely by PayChangu under their own privacy policy.</p>
+            <h4>Data Security</h4>
+            <p>We take reasonable steps to protect your personal information using industry standard security measures. Your payment data is encrypted and processed through PayChangu, a licensed payment gateway in Malawi.</p>
+            <h4>Your Rights</h4>
+            <p>You can request to view, update, or delete your personal information at any time by contacting us on WhatsApp at +265 983 311 818.</p>
+            <h4>Contact Us</h4>
+            <p>If you have questions about this Privacy Policy, reach us on WhatsApp at <strong>+265 983 311 818</strong> or on Instagram <strong>@trippamw</strong>.</p>
+        </div>
+    </div>
+
+    <!-- TERMS AND CONDITIONS MODAL -->
+    <div class="modal-overlay" id="termsModal" onclick="closeLegalOutside(event)">
+        <div class="legal-modal">
+            <div class="modal-header">
+                <h2>Terms and Conditions</h2>
+                <button class="modal-close" onclick="closeLegal('termsModal')">✕</button>
+            </div>
+            <p class="legal-date">Last updated: May 7, 2026</p>
+            <p>By using Trippa's services, you agree to the following terms. Please read them carefully.</p>
+            <h4>Our Service</h4>
+            <p>Trippa is a stay planning service. We help couples find and book romantic pool stays across Malawi. Our planning service is free. You pay only for the accommodation and any add ons you choose.</p>
+            <h4>How It Works</h4>
+            <ul>
+                <li>You submit your preferences through our website or WhatsApp.</li>
+                <li>We send you personalized stay recommendations within 24 hours.</li>
+                <li>If you choose to book, we facilitate the booking with the accommodation provider.</li>
+                <li>Payment is processed securely through PayChangu using TNM Mpamba, Airtel Money, Visa, Mastercard, or Bank Transfer.</li>
+            </ul>
+            <h4>Payments and Refunds</h4>
+            <p>All payments are processed securely through PayChangu, our licensed payment gateway. When you book through Trippa, your payment is collected by Trippa and we handle paying the accommodation provider on your behalf. Refund policies depend on the cancellation terms of your chosen stay. Please review the specific cancellation policy before booking.</p>
+            <h4>Accuracy of Information</h4>
+            <p>We make every effort to ensure that the stays we recommend match their descriptions. However, we are not responsible for any differences between what is advertised and what is provided by the accommodation. We personally vet every property we recommend.</p>
+            <h4>Limitation of Liability</h4>
+            <p>Trippa acts as a planning and booking facilitator only. We are not the accommodation provider and are not liable for any issues arising from your stay, including but not limited to property conditions, service quality, or personal injury.</p>
+            <h4>Changes to Terms</h4>
+            <p>We may update these terms from time to time. Any changes will be posted on this page with an updated date. Continued use of our service after changes constitutes acceptance of the new terms.</p>
+            <h4>Contact Us</h4>
+            <p>For any questions about these terms, contact us on WhatsApp at <strong>+265 983 311 818</strong> or on Instagram <strong>@trippamw</strong>.</p>
+        </div>
+    </div>
+
     <!-- STICKY MOBILE CTA -->
     <div class="sticky-cta">
         <button class="btn-primary" onclick="openModal()">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Plan My Escape
+            Plan My Romantic Escape
         </button>
     </div>
 
@@ -2082,7 +2445,7 @@
     <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
         <div class="modal">
             <div class="modal-header">
-                <h3>Plan My Escape</h3>
+                <h3>Plan My Romantic Escape</h3>
                 <button class="modal-close" onclick="closeModal()">✕</button>
             </div>
             <form id="enquiryForm" novalidate>
@@ -2186,7 +2549,7 @@
 
                 <button type="button" class="btn-submit" onclick="submitForm()">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                    Plan My Escape
+                    Get My Free Escape Plan
                 </button>
             </form>
         </div>
@@ -2382,6 +2745,52 @@
 
             setInterval(update, 8000 + Math.random() * 5000);
         })();
+
+        // Visual Slot Scarcity Counter
+        (function() {
+            var track = document.getElementById('slotsTrack');
+            if (!track) return;
+            var totalSlots = 20;
+            var bookedSlots = 8;
+            // Slowly increase booked count to simulate real bookings
+            function renderSlots() {
+                track.innerHTML = '';
+                for (var i = 0; i < totalSlots; i++) {
+                    var dot = document.createElement('div');
+                    dot.className = 'slot-dot ' + (i < bookedSlots ? 'filled' : 'available');
+                    track.appendChild(dot);
+                }
+                var remaining = totalSlots - bookedSlots;
+                var slotsEl = document.getElementById('slotsRemaining');
+                var bookedEl = document.getElementById('bookedCount');
+                if (slotsEl) slotsEl.textContent = remaining;
+                if (bookedEl) bookedEl.textContent = bookedSlots;
+            }
+            renderSlots();
+            // Slowly fill one more slot every 2-5 minutes
+            setInterval(function() {
+                if (bookedSlots < 17) {
+                    bookedSlots++;
+                    renderSlots();
+                }
+            }, 120000 + Math.random() * 180000);
+        })();
+
+        // Legal Modals
+        function openLegal(id) {
+            document.getElementById(id).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLegal(id) {
+            document.getElementById(id).classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        function closeLegalOutside(e) {
+            if (e.target.classList.contains('modal-overlay')) {
+                e.target.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
     </script>
 </body>
 </html>
